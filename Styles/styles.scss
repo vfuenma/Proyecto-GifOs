@@ -1,0 +1,104 @@
+@import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/fuentes.scss";
+@import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/barras-navegacion.scss";
+@import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/botones.scss";
+@import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/buscadores.scss";
+
+
+$font: "Chakra Petch", sans-serif;
+
+$color-scheme: (
+    principal,
+    #fdf4fc,
+    #F7C9F3,
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo.png"),
+    linear-gradient(270deg, #f7c9f3 0%, #4180f6 100%),
+    #110038,
+    #4180f6
+  ),
+  (
+    dark,
+    #0f0135,
+    #EE3EFE, 
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo_dark.png"),
+    linear-gradient(270deg, #ee3efe 0%, #2e32fb 100%),
+    #ffffff,
+    #2e32fb
+  );
+
+@mixin get_theme(
+  $name,
+  $background,
+  $color-button,
+  $icon,
+  $search,
+  $font-color,
+  $color-button-2
+) {
+  body.#{$name} {
+    background-color: $background;
+    .logo-1 {
+      background-image: $icon;
+    }
+    .btn {
+      background: $color-button;
+    }
+    .font-color {
+      color: $font-color;
+    }
+    .nav-bar {
+      background-image: $search;
+    }
+    .btn-2{
+      background: $color-button-2;
+    }
+  }
+}
+
+@each $name, $background, $color-button, $icon, $search,
+  $font-color, $color-button-2 in $color-scheme
+{
+  @include get_theme(
+    $name,
+    $background,
+    $color-button,
+    $icon,
+    $search,
+    $font-color,
+    $color-button-2
+  );
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 12px;
+  font-family: $font;
+}
+
+.body {
+  margin-right: 7.58rem;
+  margin-left: 7.58rem;
+}
+
+.logo-1 {
+  width: 8.55rem;
+  height: 5.33rem;
+  background-repeat: no-repeat;
+}
+
+.select-box{
+
+  .theme-picker {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &::-ms-expand {
+    display: none; }
+  }
+}
+
