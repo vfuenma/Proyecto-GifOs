@@ -1,0 +1,20 @@
+@mixin trending_item($footer-hover-bg-img) {
+  .trending-item {
+      position: relative;
+    footer {
+      display: none;
+    }
+    &:hover {
+      footer {
+        display: block;
+        background-image: $footer-hover-bg-img;
+        position: absolute;
+        bottom: 0;
+        font-weight: bold;
+        font-size: 1.16rem;
+        color: #FFFFFF;
+        letter-spacing: 0;
+      }
+    }
+  }
+}

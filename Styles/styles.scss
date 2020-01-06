@@ -2,27 +2,37 @@
 @import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/barras-navegacion.scss";
 @import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/botones.scss";
 @import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/buscadores.scss";
-
+@import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/trending.scss";
 
 $font: "Chakra Petch", sans-serif;
 
 $color-scheme: (
     principal,
     #fdf4fc,
-    #F7C9F3,
+    #f7c9f3,
     url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo.png"),
     linear-gradient(270deg, #f7c9f3 0%, #4180f6 100%),
     #110038,
-    #4180f6
+    #4180f6,
+    #fffafe,
+    1px solid #e6bbe2,
+    (inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d),
+    #e6e6e6,
+    (inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff)
   ),
   (
     dark,
     #0f0135,
-    #EE3EFE, 
+    #ee3efe,
     url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo_dark.png"),
     linear-gradient(270deg, #ee3efe 0%, #2e32fb 100%),
     #ffffff,
-    #2e32fb
+    #2e32fb,
+    #fffafe,
+    1px solid #2e32fb,
+    (inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #110038),
+    #b4b4b4,
+    (inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff)
   );
 
 @mixin get_theme(
@@ -32,7 +42,12 @@ $color-scheme: (
   $icon,
   $search,
   $font-color,
-  $color-button-2
+  $color-button-2,
+  $background-section-header,
+  $border-section-header,
+  $shadow-section-header,
+  $box-background,
+  $box-shadow
 ) {
   body.#{$name} {
     background-color: $background;
@@ -48,14 +63,29 @@ $color-scheme: (
     .nav-bar {
       background-image: $search;
     }
-    .btn-2{
+    .btn-2 {
       background: $color-button-2;
     }
+    .header-section {
+      background: $background-section-header;
+      box-shadow: $shadow-section-header;
+      border: $border-section-header;
+    }
+
+    .box {
+      background: $box-background;
+      box-shadow: $box-shadow;
+    }
+
+    @include trending-item($search)
+
   }
+
 }
 
-@each $name, $background, $color-button, $icon, $search,
-  $font-color, $color-button-2 in $color-scheme
+@each $name, $background, $color-button, $icon, $search, $font-color,
+  $color-button-2, $background-section-header, $border-section-header,
+  $shadow-section-header, $box-background, $box-shadow in $color-scheme
 {
   @include get_theme(
     $name,
@@ -64,7 +94,12 @@ $color-scheme: (
     $icon,
     $search,
     $font-color,
-    $color-button-2
+    $color-button-2,
+    $background-section-header,
+    $border-section-header,
+    $shadow-section-header,
+    $box-background,
+    $box-shadow
   );
 }
 
@@ -90,15 +125,14 @@ html {
   background-repeat: no-repeat;
 }
 
-.select-box{
-
+.select-box {
   .theme-picker {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 
     &::-ms-expand {
-    display: none; }
+      display: none;
+    }
   }
 }
-

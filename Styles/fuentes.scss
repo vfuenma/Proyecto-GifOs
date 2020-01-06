@@ -1,7 +1,4 @@
 
-
-
-
 .font-nav {
     font-size: 1rem;
     color: #FFFFFF;
@@ -17,8 +14,6 @@
 
 
 }
-
-
 
 .font-btn-dark{
     color: #FFFFFF;
@@ -50,4 +45,14 @@
     color: #FFFFFF;
     letter-spacing: 0;
     font-weight: bold;
+}
+
+.header-section{
+    margin-top: 5.33rem;
+
+    .font-header-section{
+        font-size: 14px;
+        color: #110038;
+        letter-spacing: 0;
+ }
 }

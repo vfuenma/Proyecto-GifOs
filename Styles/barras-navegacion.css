@@ -14,8 +14,7 @@ header .btn-bar-nav {
 
 .box {
   height: 8.25rem;
-  background: #E6E6E6;
-  box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF; }
+  padding: 0.25rem 0.25rem; }
   .box .search-box {
     background: #FFFFFF;
     border: 1px solid #979797;
@@ -28,5 +27,27 @@ header .btn-bar-nav {
     color: #B4B4B4;
     letter-spacing: 0;
     line-height: 1.83rem; }
+
+.gif-random-1 {
+  width: 23.33rem;
+  height: 23.33rem;
+  border: 1px solid black; }
+
+#random {
+  height: 16.66rem;
+  display: flex;
+  justify-content: space-between; }
+
+.header-gif-random-1 {
+  width: 16.66rem;
+  height: 2rem;
+  margin-top: 1.33rem; }
+
+#trending {
+  display: grid;
+  margin-top: 1.33rem;
+  grid-gap: 1.33rem;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr; }
 
 /*# sourceMappingURL=barras-navegacion.css.map */

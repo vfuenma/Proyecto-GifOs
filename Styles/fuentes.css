@@ -37,4 +37,11 @@
   letter-spacing: 0;
   font-weight: bold; }
 
+.header-section {
+  margin-top: 5.33rem; }
+  .header-section .font-header-section {
+    font-size: 14px;
+    color: #110038;
+    letter-spacing: 0; }
+
 /*# sourceMappingURL=fuentes.css.map */
