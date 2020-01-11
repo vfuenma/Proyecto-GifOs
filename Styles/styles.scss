@@ -3,6 +3,7 @@
 @import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/botones.scss";
 @import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/buscadores.scss";
 @import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/trending.scss";
+@import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/select-box.scss";
 
 $font: "Chakra Petch", sans-serif;
 
@@ -125,14 +126,4 @@ html {
   background-repeat: no-repeat;
 }
 
-.select-box {
-  .theme-picker {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
 
-    &::-ms-expand {
-      display: none;
-    }
-  }
-}

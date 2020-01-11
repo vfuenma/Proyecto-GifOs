@@ -1,0 +1,53 @@
+
+
+.select-box {
+    position: relative;
+    
+    .theme-picker{
+        display: none;}
+        
+      }
+    
+  
+.select-box{
+    .theme-select{
+        background-color: #F7C9F3;
+        color: #ffffff;
+        padding: 8px 16px;
+        border: 1px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+        cursor: pointer;
+
+        .select-opctions{
+            color: #ffffff;
+            padding: 8px 16px;
+            border: 1px solid transparent;
+            border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+            cursor: pointer;
+        }
+    
+        &:after{
+            position: absolute;
+            content: "";
+            top: 14px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: black transparent transparent transparent;
+        
+        }
+        }
+    }
+
+    .select-hide {
+        display: none;
+      }
+
+    .select-opctions{
+        position: absolute;
+        background-color: #F7C9F3;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+    }

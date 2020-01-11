@@ -141,6 +141,44 @@ header .btn-bar-nav {
       font-size: 1.3rem;
       position: absolute; }
 
+.select-box {
+  position: relative; }
+  .select-box .theme-picker {
+    display: none; }
+
+.select-box .theme-select {
+  background-color: #F7C9F3;
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer; }
+  .select-box .theme-select .select-opctions {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer; }
+  .select-box .theme-select:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: black transparent transparent transparent; }
+
+.select-hide {
+  display: none; }
+
+.select-opctions {
+  position: absolute;
+  background-color: #F7C9F3;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99; }
+
 body.principal {
   background-color: #fdf4fc; }
   body.principal .logo-1 {
@@ -224,12 +262,5 @@ html {
   width: 8.55rem;
   height: 5.33rem;
   background-repeat: no-repeat; }
-
-.select-box .theme-picker {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none; }
-  .select-box .theme-picker::-ms-expand {
-    display: none; }
 
 /*# sourceMappingURL=styles.css.map */

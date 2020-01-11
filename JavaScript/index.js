@@ -1,21 +1,7 @@
 const APIKEY = "hpWd6JPs0tVTz4TVIOvoPo6H8pi9Elsy";
 
-const themePicker = document.getElementsByClassName("theme-picker")[0];
-themePicker.addEventListener("change", () => {
-  // 1 - Obtener el valor seleccionado
-  const selectedTheme = themePicker.value;
-
-  // 2 - Obtener el elemento body
-  const body = document.getElementsByTagName("body")[0];
-
-  // 3 - Sacar la clase actual y poner la clase seleccionada
-  body.className = selectedTheme;
-});
-
 function getRandomResults() {
-  const found = fetch(
-    `http://api.giphy.com/v1/gifs/random?api_key=${APIKEY}`
-  )
+  const found = fetch(`http://api.giphy.com/v1/gifs/random?api_key=${APIKEY}`)
     .then(response => {
       return response.json();
     })
@@ -25,7 +11,12 @@ function getRandomResults() {
   return found;
 }
 
-const randomResults = [getRandomResults(),getRandomResults(),getRandomResults(),getRandomResults()];
+const randomResults = [
+  getRandomResults(),
+  getRandomResults(),
+  getRandomResults(),
+  getRandomResults()
+];
 Promise.all(randomResults).then(randomGifs => {
   const boxRandomGifs = document.getElementById("random");
   randomGifs.forEach(response => {
@@ -54,24 +45,24 @@ getTrendingResults().then(response => {
   const trendingGifs = response.data;
   const boxTrendingGifs = document.getElementById("trending");
   trendingGifs.forEach(gif => {
-      const trendingItem = createTrendingItem(gif);
-    
+    const trendingItem = createTrendingItem(gif);
+
     boxTrendingGifs.appendChild(trendingItem);
   });
 });
 
-function createTrendingItem(gif){
-    const trendingItemContainer = document.createElement('div');
-    trendingItemContainer.className="trending-item"
-    const imageTrending = document.createElement("img");
-    imageTrending.src = gif.images.fixed_height.url;
-    imageTrending.alt = gif.title;
-    trendingItemContainer.appendChild(imageTrending)
-    const footer = document.createElement('footer');
-    footer.innerText = gif.title;
-    footer.className = 'trending-header';
-    trendingItemContainer.appendChild(footer)
-    return trendingItemContainer;
+function createTrendingItem(gif) {
+  const trendingItemContainer = document.createElement("div");
+  trendingItemContainer.className = "trending-item";
+  const imageTrending = document.createElement("img");
+  imageTrending.src = gif.images.fixed_height.url;
+  imageTrending.alt = gif.title;
+  trendingItemContainer.appendChild(imageTrending);
+  const footer = document.createElement("footer");
+  footer.innerText = gif.title;
+  footer.className = "trending-header";
+  trendingItemContainer.appendChild(footer);
+  return trendingItemContainer;
 }
 
 function getSearchResults(search) {
@@ -108,3 +99,92 @@ buttonSearch.addEventListener("click", function() {
     });
   });
 });
+
+function ConfigurarTeamPicker() {
+  const selectBox = document.getElementsByClassName("select-box")[0];
+  const selElmnt = selectBox.getElementsByTagName("select")[0];
+  const selectName = document.createElement("DIV");
+  selectName.setAttribute("class", "theme-select");
+  selectName.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  selectBox.appendChild(selectName);
+
+  const selectItems = document.createElement("DIV");
+  selectItems.setAttribute("class", "select-opctions select-hide");
+  for (let i = 1; i < selElmnt.length; i++) {
+    const selectOptions = document.createElement("DIV");
+    selectOptions.innerHTML = selElmnt.options[i].innerHTML;
+    selectOptions.addEventListener("click", function(e) {
+      const selectBoxClick = this.parentNode.parentNode.getElementsByTagName(
+        "select"
+      )[0];
+      const selectOptionsClick = this.parentNode.previousSibling;
+      for (let j = 0; j < selectBoxClick.length; j++) {
+        if (selectBoxClick.options[j].innerHTML == this.innerHTML) {
+          selectBoxClick.selectedIndex = j;
+          selectOptionsClick.innerHTML = this.innerHTML;
+          const selectClass = this.parentNode.getElementsByClassName(
+            "same-as-selected"
+          );
+          for (let k = 0; k < selectClass.length; k++) {
+            selectClass[k].removeAttribute("class");
+          }
+          this.setAttribute("class", "same-as-selected");
+          break;
+        }
+      }
+      selectOptionsClick.click();
+    });
+    selectItems.appendChild(selectOptions);
+  }
+
+  selectBox.appendChild(selectItems);
+  selectName.addEventListener("click", function(e) {
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+  });
+}
+
+function closeAllSelect(elmnt) {
+  /* A function that will close all select boxes in the document,
+  except the current select box: */
+  var x,
+    y,
+    i,
+    arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  for (i = 0; i < y.length; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i);
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < x.length; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+
+/* If the user clicks anywhere outside the select box,
+then close all select boxes: */
+document.addEventListener("click", closeAllSelect);
+
+const themePicker = document.getElementsByClassName("theme-picker")[0];
+console.log("Add change event to themePicker", themePicker);
+themePicker.addEventListener("change", () => {
+  console.log("ThemePicker value changed");
+  // 1 - Obtener el valor seleccionado
+  const selectedTheme = themePicker.value;
+
+  // 2 - Obtener el elemento body
+  const body = document.getElementsByTagName("body")[0];
+
+  // 3 - Sacar la clase actual y poner la clase seleccionada
+  body.className = selectedTheme;
+});
+
+ConfigurarTeamPicker();
