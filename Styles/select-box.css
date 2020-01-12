@@ -3,37 +3,50 @@
   .select-box .theme-picker {
     display: none; }
 
-.select-box .theme-select {
-  background-color: #F7C9F3;
-  color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer; }
-  .select-box .theme-select .select-opctions {
-    color: #ffffff;
-    padding: 8px 16px;
-    border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-    cursor: pointer; }
-  .select-box .theme-select:after {
-    position: absolute;
-    content: "";
-    top: 14px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: black transparent transparent transparent; }
+.select-box {
+  width: 12rem;
+  margin-right: 1.33rem; }
+  .select-box .theme-select {
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    height: 3rem;
+    cursor: pointer;
+    text-align: left;
+    padding: 7px 7px 7px 7px;
+    font-size: 1.33rem; }
+    .select-box .theme-select .select-options {
+      border: 1px solid #110038;
+      box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+      cursor: pointer; }
+    .select-box .theme-select:after {
+      position: absolute;
+      content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/dropdown.svg");
+      margin-top: -7px;
+      width: 36px;
+      height: 31px;
+      border-left: 1px solid #110038;
+      margin-left: 15px;
+      text-align: center;
+      padding-top: 4px; }
 
 .select-hide {
   display: none; }
 
-.select-opctions {
+.select-options {
   position: absolute;
-  background-color: #F7C9F3;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99; }
+  width: 145px;
+  height: 102px; }
+  .select-options div {
+    height: 35px;
+    width: 125px;
+    margin: 10px;
+    border: 1px solid #808080;
+    box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+    text-align: left;
+    padding: 7px 7px 7px 16px;
+    font-size: 1.33rem; }
+
+.same-as-selected::first-letter {
+  text-decoration: underline; }
 
 /*# sourceMappingURL=select-box.css.map */

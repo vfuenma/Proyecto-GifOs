@@ -101,7 +101,8 @@ header .btn-bar-nav {
   box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   width: 12rem;
   height: 3rem;
-  margin-right: 1.38rem; }
+  margin-right: 1.38rem;
+  padding: 7px 7px 7px 7px; }
 
 .btn-search {
   background: #E6E6E6;
@@ -115,77 +116,65 @@ header .btn-bar-nav {
   line-height: 18px; }
 
 .select-box {
-  position: relative;
-  margin-right: 3.98rem; }
-  .select-box .theme-picker {
-    border: 1px solid #110038;
-    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    width: 12rem;
-    height: 3rem;
-    cursor: pointer;
-    border-radius: 0;
-    text-align: center;
-    display: inline-block;
-    padding: 7px 7px 7px 25px; }
-  .select-box span {
-    width: 3rem;
-    height: 3rem;
-    padding: 10px 13px;
-    border: 1px solid #110038;
-    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    display: inline-block;
-    position: absolute;
-    cursor: pointer; }
-    .select-box span i {
-      text-align: center;
-      font-size: 1.3rem;
-      position: absolute; }
-
-.select-box {
   position: relative; }
   .select-box .theme-picker {
     display: none; }
 
-.select-box .theme-select {
-  background-color: #F7C9F3;
-  color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer; }
-  .select-box .theme-select .select-opctions {
-    color: #ffffff;
-    padding: 8px 16px;
-    border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-    cursor: pointer; }
-  .select-box .theme-select:after {
-    position: absolute;
-    content: "";
-    top: 14px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: black transparent transparent transparent; }
+.select-box {
+  width: 12rem;
+  margin-right: 1.33rem; }
+  .select-box .theme-select {
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    height: 3rem;
+    cursor: pointer;
+    text-align: left;
+    padding: 7px 7px 7px 7px;
+    font-size: 1.33rem; }
+    .select-box .theme-select .select-options {
+      border: 1px solid #110038;
+      box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+      cursor: pointer; }
+    .select-box .theme-select:after {
+      position: absolute;
+      content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/dropdown.svg");
+      margin-top: -7px;
+      width: 36px;
+      height: 31px;
+      border-left: 1px solid #110038;
+      margin-left: 15px;
+      text-align: center;
+      padding-top: 4px; }
 
 .select-hide {
   display: none; }
 
-.select-opctions {
+.select-options {
   position: absolute;
-  background-color: #F7C9F3;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99; }
+  width: 145px;
+  height: 102px; }
+  .select-options div {
+    height: 35px;
+    width: 125px;
+    margin: 10px;
+    border: 1px solid #808080;
+    box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+    text-align: left;
+    padding: 7px 7px 7px 16px;
+    font-size: 1.33rem; }
+
+.same-as-selected::first-letter {
+  text-decoration: underline; }
 
 body.principal {
   background-color: #fdf4fc; }
   body.principal .logo-1 {
     background-image: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo.png"); }
+  body.principal .theme-select {
+    background: #f7c9f3; }
   body.principal .btn {
     background: #f7c9f3; }
-  body.principal .font-color {
+  body.principal .font-color, body.principal .theme-select {
     color: #110038; }
   body.principal .nav-bar {
     background-image: linear-gradient(270deg, #f7c9f3 0%, #4180f6 100%); }
@@ -195,6 +184,13 @@ body.principal {
     background: #fffafe;
     box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d;
     border: 1px solid #e6bbe2; }
+  body.principal .select-options {
+    background: #e6e6e6;
+    box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff; }
+    body.principal .select-options div {
+      background: #F0F0F0; }
+      body.principal .select-options div:active {
+        background: #FFF4FD; }
   body.principal .box {
     background: #e6e6e6;
     box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff; }
@@ -216,9 +212,11 @@ body.dark {
   background-color: #0f0135; }
   body.dark .logo-1 {
     background-image: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo_dark.png"); }
+  body.dark .theme-select {
+    background: #ee3efe; }
   body.dark .btn {
     background: #ee3efe; }
-  body.dark .font-color {
+  body.dark .font-color, body.dark .theme-select {
     color: #ffffff; }
   body.dark .nav-bar {
     background-image: linear-gradient(270deg, #ee3efe 0%, #2e32fb 100%); }
@@ -228,6 +226,13 @@ body.dark {
     background: #fffafe;
     box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #110038;
     border: 1px solid #2e32fb; }
+  body.dark .select-options {
+    background: #b4b4b4;
+    box-shadow: inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff; }
+    body.dark .select-options div {
+      background: #CCCCCC; }
+      body.dark .select-options div:active {
+        background: #2E32FB; }
   body.dark .box {
     background: #b4b4b4;
     box-shadow: inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff; }

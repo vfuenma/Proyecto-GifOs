@@ -5,6 +5,7 @@ box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
 width: 12rem;
 height: 3rem;
 margin-right: 1.38rem;
+padding: 7px 7px 7px 7px;
 }
 
 
@@ -20,42 +21,7 @@ margin-right: 1.38rem;
     line-height: 18px;
 }
 
-.select-box{
-    position: relative;
-    margin-right: 3.98rem;
-
-    .theme-picker{
-        border: 1px solid #110038;
-        box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-        width: 12rem;
-        height: 3rem;
-        cursor: pointer;
-        border-radius: 0;
-        text-align: center;
-        display: inline-block;
-        padding: 7px 7px 7px 25px;
-    }
-
-    span{
-    width: 3rem;
-    height: 3rem;
-    padding: 10px 13px;
-    border: 1px solid #110038;
-    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    display: inline-block;
-    position: absolute;
-    cursor: pointer;
-   
-    
-
-    i{
-    text-align:  center;
-    font-size: 1.3rem;
-    position: absolute;
-
-    }
-    }
 
 
-}
+
 

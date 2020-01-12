@@ -100,41 +100,71 @@ buttonSearch.addEventListener("click", function() {
   });
 });
 
+function createThemeSelect(selectedValue) {
+  const selectName = document.createElement("DIV");
+  selectName.setAttribute("class", "theme-select");
+  selectName.innerHTML = selectedValue;
+  return selectName;
+}
+
+function findSelectedOptionIndex(selectBoxClick, value) {
+  for (let j = 0; j < selectBoxClick.options.length; j++) {
+    if (selectBoxClick.options[j].innerHTML == value) {
+      return j;
+    }
+  }
+}
+
+function seleccionarOption() {
+  const selectBoxClick = this.parentNode.parentNode.getElementsByTagName(
+    "select"
+  )[0];
+  const selectOptionsClick = this.parentNode.previousSibling;
+
+  const selectedOptionIndex = findSelectedOptionIndex(
+    selectBoxClick,
+    this.innerHTML
+  );
+
+  const selectedOption = selectBoxClick.options[selectedOptionIndex];
+
+  selectBoxClick.selectedIndex = selectedOptionIndex;
+  selectOptionsClick.innerHTML = this.innerHTML;
+  const selectClass = this.parentNode.getElementsByClassName(
+    "same-as-selected"
+  );
+  for (let k = 0; k < selectClass.length; k++) {
+    selectClass[k].removeAttribute("class");
+  }
+  this.setAttribute("class", "same-as-selected");
+
+  setBodyTheme(selectedOption.value);
+
+  selectOptionsClick.click();
+}
+
+function createDivOption(selectOption) {
+  const selectOptions = document.createElement("DIV");
+  selectOptions.innerHTML = selectOption.innerHTML;
+  selectOptions.addEventListener("click", seleccionarOption);
+
+  return selectOptions;
+}
+
 function ConfigurarTeamPicker() {
   const selectBox = document.getElementsByClassName("select-box")[0];
   const selElmnt = selectBox.getElementsByTagName("select")[0];
-  const selectName = document.createElement("DIV");
-  selectName.setAttribute("class", "theme-select");
-  selectName.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  const selectName = createThemeSelect(
+    selElmnt.options[selElmnt.selectedIndex].innerHTML
+  );
   selectBox.appendChild(selectName);
 
   const selectItems = document.createElement("DIV");
-  selectItems.setAttribute("class", "select-opctions select-hide");
-  for (let i = 1; i < selElmnt.length; i++) {
-    const selectOptions = document.createElement("DIV");
-    selectOptions.innerHTML = selElmnt.options[i].innerHTML;
-    selectOptions.addEventListener("click", function(e) {
-      const selectBoxClick = this.parentNode.parentNode.getElementsByTagName(
-        "select"
-      )[0];
-      const selectOptionsClick = this.parentNode.previousSibling;
-      for (let j = 0; j < selectBoxClick.length; j++) {
-        if (selectBoxClick.options[j].innerHTML == this.innerHTML) {
-          selectBoxClick.selectedIndex = j;
-          selectOptionsClick.innerHTML = this.innerHTML;
-          const selectClass = this.parentNode.getElementsByClassName(
-            "same-as-selected"
-          );
-          for (let k = 0; k < selectClass.length; k++) {
-            selectClass[k].removeAttribute("class");
-          }
-          this.setAttribute("class", "same-as-selected");
-          break;
-        }
-      }
-      selectOptionsClick.click();
-    });
-    selectItems.appendChild(selectOptions);
+  selectItems.setAttribute("class", "select-options select-hide");
+  for (let i = 1; i < selElmnt.options.length; i++) {
+    const selectOption = selElmnt.options[i];
+    const optionElement = createDivOption(selectOption);
+    selectItems.appendChild(optionElement);
   }
 
   selectBox.appendChild(selectItems);
@@ -173,18 +203,14 @@ function closeAllSelect(elmnt) {
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
 
-const themePicker = document.getElementsByClassName("theme-picker")[0];
-console.log("Add change event to themePicker", themePicker);
-themePicker.addEventListener("change", () => {
-  console.log("ThemePicker value changed");
-  // 1 - Obtener el valor seleccionado
-  const selectedTheme = themePicker.value;
-
-  // 2 - Obtener el elemento body
+function setBodyTheme(selectedTheme) {
+  // 1 - Obtener el elemento body
   const body = document.getElementsByTagName("body")[0];
 
-  // 3 - Sacar la clase actual y poner la clase seleccionada
+  // 2 - Sacar la clase actual y poner la clase seleccionada
   body.className = selectedTheme;
-});
+}
+
+
 
 ConfigurarTeamPicker();

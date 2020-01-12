@@ -3,7 +3,8 @@
   box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   width: 12rem;
   height: 3rem;
-  margin-right: 1.38rem; }
+  margin-right: 1.38rem;
+  padding: 7px 7px 7px 7px; }
 
 .btn-search {
   background: #E6E6E6;
@@ -15,32 +16,5 @@
   color: #B4B4B4;
   letter-spacing: 0;
   line-height: 18px; }
-
-.select-box {
-  position: relative;
-  margin-right: 3.98rem; }
-  .select-box .theme-picker {
-    border: 1px solid #110038;
-    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    width: 12rem;
-    height: 3rem;
-    cursor: pointer;
-    border-radius: 0;
-    text-align: center;
-    display: inline-block;
-    padding: 7px 7px 7px 25px; }
-  .select-box span {
-    width: 3rem;
-    height: 3rem;
-    padding: 10px 13px;
-    border: 1px solid #110038;
-    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    display: inline-block;
-    position: absolute;
-    cursor: pointer; }
-    .select-box span i {
-      text-align: center;
-      font-size: 1.3rem;
-      position: absolute; }
 
 /*# sourceMappingURL=botones.css.map */

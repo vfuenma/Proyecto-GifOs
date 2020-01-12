@@ -19,7 +19,9 @@ $color-scheme: (
     1px solid #e6bbe2,
     (inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d),
     #e6e6e6,
-    (inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff)
+    (inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff),
+    #F0F0F0,
+    #FFF4FD
   ),
   (
     dark,
@@ -33,7 +35,9 @@ $color-scheme: (
     1px solid #2e32fb,
     (inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #110038),
     #b4b4b4,
-    (inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff)
+    (inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff),
+    #CCCCCC,
+    #2E32FB
   );
 
 @mixin get_theme(
@@ -48,17 +52,22 @@ $color-scheme: (
   $border-section-header,
   $shadow-section-header,
   $box-background,
-  $box-shadow
+  $box-shadow,
+  $inside-box,
+  $hover-box
 ) {
   body.#{$name} {
     background-color: $background;
     .logo-1 {
       background-image: $icon;
     }
-    .btn {
+    .theme-select {
       background: $color-button;
     }
-    .font-color {
+    .btn{
+      background: $color-button;
+    }
+    .font-color, .theme-select{
       color: $font-color;
     }
     .nav-bar {
@@ -73,10 +82,28 @@ $color-scheme: (
       border: $border-section-header;
     }
 
+    .select-options{
+      background: $box-background;
+      box-shadow: $box-shadow;
+
+      div{
+        background: $inside-box;
+
+        &:active{
+          background: $hover-box;
+        }
+
+      }
+    }
+
     .box {
       background: $box-background;
       box-shadow: $box-shadow;
     }
+
+
+
+
 
     @include trending-item($search)
 
@@ -86,7 +113,7 @@ $color-scheme: (
 
 @each $name, $background, $color-button, $icon, $search, $font-color,
   $color-button-2, $background-section-header, $border-section-header,
-  $shadow-section-header, $box-background, $box-shadow in $color-scheme
+  $shadow-section-header, $box-background, $box-shadow, $inside-box, $hover-box in $color-scheme
 {
   @include get_theme(
     $name,
@@ -100,7 +127,9 @@ $color-scheme: (
     $border-section-header,
     $shadow-section-header,
     $box-background,
-    $box-shadow
+    $box-shadow,
+    $inside-box,
+    $hover-box
   );
 }
 
