@@ -49,4 +49,10 @@
 .same-as-selected::first-letter {
   text-decoration: underline; }
 
+.arrow {
+  width: 2rem;
+  height: 2rem;
+  align-self: center;
+  margin-right: 0.58rem; }
+
 /*# sourceMappingURL=select-box.css.map */

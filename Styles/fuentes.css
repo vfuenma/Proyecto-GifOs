@@ -22,7 +22,9 @@
   font-weight: bold;
   font-size: 1.16rem;
   color: #FFFFFF;
-  letter-spacing: 0; }
+  letter-spacing: 0;
+  margin-left: 0.25rem;
+  align-self: center; }
 
 .font-btn-gif {
   font-size: 1.16rem;

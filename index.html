@@ -21,8 +21,7 @@
         <nav class="nav-1">
             <div class="logo-1"></div>
             <div class= "btn-bar-nav">
-            <a href= # class= "btn btn-nav font-color">Crear Guifos</a>
-
+            <a href= "crearGifOs.html" class= "btn btn-nav font-color">Crear Guifos</a>
             <div class="select-box">
                 <select name= "theme" class= "theme-picker"> 
                      <option value="principal"> Elegir tema</option> 
@@ -30,9 +29,7 @@
                     <option value="dark">Sailor night</option>
                 </select>
             </div>
-
-
-            <a href=# class= "font-color">Mis Guifos</a>
+            <a href="crearGifOs.html" class= "font-color">Mis Guifos</a>
         </div>
         </nav>
 
@@ -41,24 +38,51 @@
                 <div class="container-1">
                     <input type="search" id="search" class="search-box" placeholder= "    Busca gifs, hashtags, temas, busca lo que quieras…" />
                     <button class="btn-search">Buscar</button>
-                    
                 </div>
         </div>
+        <div id="placeholder-search"></div>
+        <template id="busquedas-template">
+        <div class="busquedas-sugeridas">
+
+            <buttom class="boton-busqueda" onclick="buscarSugerencia('sailor moon')">Sailor moon</buttom>
+            <buttom class="boton-busqueda" onclick="buscarSugerencia('puppies')">Puppies </buttom>
+            <buttom class="boton-busqueda" onclick="buscarSugerencia('power rangers')">Power Rangers</buttom>
+
+        </div>
+    </template>
 
         <section class="gifs">
             <div id="giphy"></div>
+        </section>
 
 
         <section class="random">
             <div class="header-section">
                 <p class="font-header-section">Hoy te sugerimos:</p>
             </div>
-            
+            <div class="container-1">
+                <div class="div-random">
+                    <header class="nav-bar"><p id="title-0" class="font-gif"></p> <img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg" class="close-btn"></header>
+                    <img id="sugerido-0" src="" alt="">
+                    <button class="btn-2 font-btn-gif">Ver más</button>
+                </div> 
+                <div class="div-random">
+                    <header class="nav-bar"><p id="title-1" class="font-gif"></p><img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg" class="close-btn"></header>
+                    <img id="sugerido-1" src="" alt=""> 
+                    <button class="btn-2 font-btn-gif">Ver más</button>
+                </div> 
+                <div class="div-random">
+                    <header class="nav-bar"><p id="title-2" class="font-gif"></p><img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg" class="close-btn"></header>
+                    <img id="sugerido-2" src="" alt="">
+                    <button class="btn-2 font-btn-gif">Ver más</button>
+                </div> 
+                <div class=div-random>
+                    <header class="nav-bar"> <p id="title-3" class="font-gif"></p><img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg" class="close-btn"></header>
+                    <img id="sugerido-3" src="" alt="">
+                    <button class="btn-2 font-btn-gif">Ver más</button>
+                </div> 
+            </div>
 
-            
-            <div id="random"></div>
-        
-        <button class='btn-2'>Ver más</button> 
         </section>
         
         <section class="trending-gifs">
@@ -68,12 +92,7 @@
             <div id="trending"></div>
         </section>
 
-        
-           
-        </section>
-       
-
-
+  
     </header>
 <script src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/JavaScript/index.js"></script>
     </div>    

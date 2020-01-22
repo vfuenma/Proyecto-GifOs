@@ -89,8 +89,14 @@ $color-scheme: (
       div{
         background: $inside-box;
 
-        &:active{
-          background: $hover-box;
+        &:active, &:hover{
+          background-color: $hover-box;
+          border: 1px solid #110038;
+
+        
+        }
+        .same-as-selected{
+          background-color: $hover-box;
         }
 
       }
@@ -100,10 +106,6 @@ $color-scheme: (
       background: $box-background;
       box-shadow: $box-shadow;
     }
-
-
-
-
 
     @include trending-item($search)
 

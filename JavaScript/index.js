@@ -1,36 +1,47 @@
 const APIKEY = "hpWd6JPs0tVTz4TVIOvoPo6H8pi9Elsy";
 
+let RandomArray = ["mean girls", "puppies", "spongebob", "television"];
+
 function getRandomResults() {
-  const found = fetch(`http://api.giphy.com/v1/gifs/random?api_key=${APIKEY}`)
+  let tag = 0;
+  for (i = 0; i < 4; i++) {
+    fetchRandomGif(tag);
+    tag++;
+  }
+}
+
+function fetchRandomGif(tag) {
+  fetch(
+    `http://api.giphy.com/v1/gifs/random?api_key=${APIKEY}&tag=${RandomArray[tag]}`
+  )
     .then(response => {
       return response.json();
+    })
+
+    .then(response => {
+      let gif = response.data.images.fixed_width.url;
+      console.log(gif);
+      let name = "#" + RandomArray[tag];
+      let gifTitle = response.data.title;
+      renderRandomGif(gif, tag, name, gifTitle);
     })
     .catch(error => {
       console.error(error);
     });
-  return found;
 }
 
-const randomResults = [
-  getRandomResults(),
-  getRandomResults(),
-  getRandomResults(),
-  getRandomResults()
-];
-Promise.all(randomResults).then(randomGifs => {
-  const boxRandomGifs = document.getElementById("random");
-  randomGifs.forEach(response => {
-    const gif = response.data;
-    const imageRandom = document.createElement("img");
-    imageRandom.src = gif.images.fixed_width.url;
-    imageRandom.alt = gif.title;
-    boxRandomGifs.appendChild(imageRandom);
-  });
-});
+function renderRandomGif(gif, tag, name, gifTitle) {
+  const boxRandomGifs = document.getElementById(`sugerido-${tag}`);
+  boxRandomGifs.src = gif;
+  boxRandomGifs.alt = gifTitle;
+  boxRandomGifs.parentElement.getElementsByTagName("p")[0].innerHTML = name;
+}
+
+getRandomResults();
 
 function getTrendingResults() {
   const found = fetch(
-    `http://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=12`
+    `http://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=16`
   )
     .then(response => {
       return response.json();
@@ -46,14 +57,18 @@ getTrendingResults().then(response => {
   const boxTrendingGifs = document.getElementById("trending");
   trendingGifs.forEach(gif => {
     const trendingItem = createTrendingItem(gif);
-
     boxTrendingGifs.appendChild(trendingItem);
   });
 });
 
 function createTrendingItem(gif) {
+  let fixed_height = gif.images.fixed_height;
+  let className = "trending-item";
+  if (fixed_height.width > 280){
+    className = className + " trending-item-wide"
+  }
   const trendingItemContainer = document.createElement("div");
-  trendingItemContainer.className = "trending-item";
+  trendingItemContainer.className = className;
   const imageTrending = document.createElement("img");
   imageTrending.src = gif.images.fixed_height.url;
   imageTrending.alt = gif.title;
@@ -63,6 +78,11 @@ function createTrendingItem(gif) {
   footer.className = "trending-header";
   trendingItemContainer.appendChild(footer);
   return trendingItemContainer;
+}
+
+function buscarSugerencia(sugerencia) {
+  let searchResults = document.getElementById("search");
+  searchResults.value = sugerencia;
 }
 
 function getSearchResults(search) {
@@ -99,6 +119,33 @@ buttonSearch.addEventListener("click", function() {
     });
   });
 });
+
+let sugeridosVisibles = false;
+let eventoCerrarSugeridos = null;
+
+function limpiarSugeridos() {
+  const divBusqueda = document.getElementById("placeholder-search");
+  divBusqueda.innerHTML = null;
+  sugeridosVisibles = false;
+}
+
+function mostrarSugeridos() {
+  const inputSearch = document.getElementById("search");
+  inputSearch.oninput = e => {
+    if (!sugeridosVisibles) {
+      const templateBusqueda = document.getElementById("busquedas-template");
+      const divBusqueda = document.getElementById("placeholder-search");
+      divBusqueda.innerHTML = templateBusqueda.innerHTML;
+      eventoCerrarSugeridos = window.addEventListener("click", function() {
+        limpiarSugeridos();
+        window.removeEventListener(eventoCerrarSugeridos);
+      });
+      sugeridosVisibles = true;
+    }
+  };
+}
+
+mostrarSugeridos();
 
 function createThemeSelect(selectedValue) {
   const selectName = document.createElement("DIV");
@@ -210,7 +257,5 @@ function setBodyTheme(selectedTheme) {
   // 2 - Sacar la clase actual y poner la clase seleccionada
   body.className = selectedTheme;
 }
-
-
 
 ConfigurarTeamPicker();

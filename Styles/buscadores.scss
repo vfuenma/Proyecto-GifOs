@@ -1,0 +1,78 @@
+#sugerido-1,
+#sugerido-2,
+#sugerido-0,
+#sugerido-3 {
+  height: 23.33rem;
+  width: 23.33rem;
+  margin-left: 0.28rem;
+}
+
+.CrearGifos {
+  display: flex;
+  justify-content: center;
+  margin-top: 4.5rem;
+
+  .container {
+    height: 32.17rem;
+    width: 57rem;
+    padding: 0.25rem;
+    background: #e6e6e6;
+    box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+
+    .titulo-crear-gifos {
+      display: flex;
+      align-self: flex-start;
+      margin-top: 2.25rem;
+      margin-left: 2.03rem;
+
+      h2 {
+        font-family: "Chakra Petch", sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        color: #110038;
+        letter-spacing: 0;
+        line-height: 22px;
+      }
+
+      .pantallita {
+        width: 2.67rem;
+        height: 2.67rem;
+        margin-right: 1.33rem;
+      }
+    }
+
+    .texto-crear-guifo {
+      margin-left: 6.08rem;
+      margin-top: 1.42rem;
+      margin-right: 7.75rem;
+      margin-bottom: 2.33rem;
+      align-self: center;
+
+      p,
+      ul,
+      li {
+        font-family: "Chakra Petch", sans-serif;
+        font-size: 14px;
+        color: #110038;
+        letter-spacing: 0;
+        line-height: 20px;
+        list-style: none;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .botones {
+      display: flex;
+      justify-content: flex-end;
+
+      .btn-crear-gifo {
+        background: #f7c9f3;
+        border: 1px solid #110038;
+        box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+        margin-right: 1.33rem;
+        width: 12rem;
+        height: 3rem;
+      }
+    }
+  }
+}
