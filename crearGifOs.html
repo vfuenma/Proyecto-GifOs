@@ -1,67 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Crea tu gif</title>
-    <link href="Styles/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
+    <link href="Styles/styles.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/87685218d8.js"
-      crossorigin="anonymous"> </script>
-</head>
-<body class="principal">
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+  </head>
+
+  <body class="principal">
     <header class="header">
-        <div class= "nav-bar nav-bar-1">
-            <p class="font-nav">¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</p>
-        </div>
-     <div class="body">  
-         
-        <nav class="nav-2">
-           <a href="index.html"> <img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/arrow.svg" class="arrow"></a>
-            <div class="logo-1"></div>
-            </nav>
-
-    <section class="CrearGifos">
-
+      <div class="nav-bar nav-bar-1">
+        <p class="font-nav">
+          ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número
+          de visitas: 12.765.803
+        </p>
+      </div>
+    </header>
+    <div class="body">
+      <nav class="nav-2">
+        <a href="index.html">
+          <img
+            src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/arrow.svg"
+            class="arrow"
+        /></a>
+        <div class="logo-1"></div>
+      </nav>
+      <section class="CrearGifos"></section>
+      <template id="new-gifOs">
         <div class="container">
-            <header class="nav-bar"> <p class="font-nav">Crear GifOS</p></header>
-            <div class="titulo-crear-gifos">
-                <img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/window img.png" class="pantallita">
-                <h2>Aquí podrás creas tus propios GifOs</h2>
-                
-            </div>
-            <div class="texto-crear-guifo">
-                <p>Crear tu <b><em>guifo</em></b> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo son:</p>
-                <ul>
-                <li><b>1)</b> Dar permiso al acceso a la cámara (Solo por el tiempo de uso).</li>
-                <li><b>2)</b> Capturar tu momento Guifo</li>
-                <li><b>3)</b> Revisar el momento</li>
-                <li><b>4)</b> Listo para subir y compartir!</li>
-                <p>¿Quieres comenzar a crear tu <b><i>guifo</i></b> ahora?</p>
+          <header class="nav-bar"><p class="font-nav">Crear GifOS</p></header>
+          <div class="titulo-crear-gifos">
+            <img
+              src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/window img.png"
+              class="pantallita"
+            />
+            <h2>Aquí podrás creas tus propios GifOs</h2>
+          </div>
+          <div class="texto-crear-guifo">
+            <p>
+              Crear tu <b><em>guifo</em></b> es muy fácil, graba cualquier
+              imagen con tu cámara y obtén guifos personalizados. Los pasos para
+              crear tu guifo son:
+            </p>
+            <ul>
+              <li>
+                <b>1)</b> Dar permiso al acceso a la cámara (Solo por el tiempo
+                de uso).
+              </li>
+              <li><b>2)</b> Capturar tu momento Guifo</li>
+              <li><b>3)</b> Revisar el momento</li>
+              <li><b>4)</b> Listo para subir y compartir!</li>
+              <p>
+                ¿Quieres comenzar a crear tu <b><i>guifo</i></b> ahora?
+              </p>
             </ul>
-            </div>
-            <div class="botones">
-
+          </div>
+          <div class="botones">
             <button class="btn-crear-gifo">Cancelar</button>
-            <button class= "btn-crear-gifo">Comenzar</button>
+            <button class="btn-crear-gifo comenzar" onclick="startVideo()">
+              Comenzar
+            </button>
+          </div>
         </div>
-        </div>
-    </section>
-        
-        <section class="CrearGifs">
-            <div class="header-section">
-                <p class="font-header-section">Mis GifOs:</p>
-            </div>
-        </section>
+      </template>
 
-        
-        <section class="Mis-gifos">
-            <div></div>
-        </section>
-     
-      
-       
-</body>
+      <section class="video-div"></section>
+      <template id="video-record">
+        <div class="container-video">
+          <header class="nav-bar">
+            <p id="title-1" class="font-nav">Un Chequeo Antes de Empezar</p>
+            <p id="title-2" class="display-none">Capturando Tu Guifo</p>
+            <p id="title-3" class="display-none">Vista Previa</p>
+            <button class="exit"></button>
+          </header>
+          <div class="video"></div>
+          <video id="video" autoplay></video>
+          <video id="video-upload" class="display-none" autoplay loop></video>
+          <div class="botones-grabar show">
+            <button class="btn-record btn" onclick="StartRecordButton()">
+              Capturar
+            </button>
+            <button
+              id="btn-stop-recording"
+              class="display-none stop-recording"
+              onclick="stopRecordButton()"
+              disabled
+            >
+              Listo
+            </button>
+          </div>
+        </div>
+      </template>
+
+      <section class="CrearGifs"></section>
+      <template id="Mis-gifos">
+        <div class="header-section">
+          <p class="font-header-section">Mis GifOs:</p>
+        </div>
+      </template>
+    </div>
+    <script src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/JavaScript/video.js"></script>
+  </body>
 </html>

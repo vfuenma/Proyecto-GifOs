@@ -20,7 +20,6 @@ function fetchRandomGif(tag) {
 
     .then(response => {
       let gif = response.data.images.fixed_width.url;
-      console.log(gif);
       let name = "#" + RandomArray[tag];
       let gifTitle = response.data.title;
       renderRandomGif(gif, tag, name, gifTitle);
