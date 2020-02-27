@@ -26,7 +26,7 @@
         </p>
       </div>
     </header>
-    <div class="body">
+    <div class="margen">
       <nav class="nav-2">
         <a href="index.html">
           <img
@@ -86,8 +86,8 @@
           <div class="video"></div>
           <video id="video" autoplay></video>
           <video id="video-upload" class="display-none" autoplay loop></video>
-          <div class="botones-grabar show">
-            <button class="btn-record btn" onclick="StartRecordButton()">
+          <div class="botones-grabar show" id="button-play">
+            <button class="btn-record btn" id= "button-record"onclick="StartRecordButton()">
               Capturar
             </button>
             <button
@@ -98,6 +98,10 @@
             >
               Listo
             </button>
+          </div>
+          <div class="display-none" id="button-send">
+            <button class= "send btn">Repetir Captura</button>
+            <button class= "send btn" onclick="uploadGif()">Subir Guifo</button>
           </div>
         </div>
       </template>

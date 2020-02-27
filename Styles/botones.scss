@@ -15,11 +15,23 @@ padding: 7px 7px 7px 7px;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
     width: 8.5rem;
     height: 3rem;
-    font-size: 16px;
+    font-size: 1.33rem;
+    text-align: center;
+    align-self: center;
     color: #B4B4B4;
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 1.5rem;
     margin-right: 1.55rem;
+}
+
+.btn-search.default{
+    &:before{
+        content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_inactive.svg");
+        height: 1.33rem;
+        width: 1.33rem;
+        text-align: center;
+        margin-right: 0.5rem;
+    }
 }
 
 

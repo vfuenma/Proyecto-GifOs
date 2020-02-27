@@ -5,6 +5,11 @@
   height: 23.33rem;
   width: 23.33rem;
   margin-left: 0.28rem; }
+  #sugerido-1:hover,
+  #sugerido-2:hover,
+  #sugerido-0:hover,
+  #sugerido-3:hover {
+    border: 1px dotted #110038; }
 
 .CrearGifos {
   display: flex;

@@ -46,4 +46,7 @@
     color: #110038;
     letter-spacing: 0; }
 
+.font-color.mis-guifos::first-letter {
+  text-decoration: underline; }
+
 /*# sourceMappingURL=fuentes.css.map */

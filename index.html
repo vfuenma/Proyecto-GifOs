@@ -17,27 +17,29 @@
         <div class= "nav-bar nav-bar-1">
             <p class="font-nav">¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</p>
         </div>
-     <div class="body">  
+      <div class="margen">
         <nav class="nav-1">
             <div class="logo-1"></div>
             <div class= "btn-bar-nav">
             <a href= "crearGifOs.html?modo=crear" class= "btn btn-nav font-color">Crear Guifos</a>
             <div class="select-box">
-                <select name= "theme" class= "theme-picker"> 
-                     <option value="principal"> Elegir tema</option> 
-                    <option value="principal" > Sailor day</option> 
-                    <option value="dark">Sailor night</option>
-                </select>
+                <button onclick="Dropdown()" class="theme-picker theme-select font-color">Elegir tema</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <button onclick="changeThemePrincipal()" id="principal" value="principal" class="theme-pick font-color"> Sailor day</button> 
+                    <button onclick="changeThemeDark()" id="dark" value="dark" class="theme-pick font-color">Sailor night</button>
+                  </div>
             </div>
-            <a href="crearGifOs.html?modo=misgifos" class= "font-color">Mis Guifos</a>
+            <a href="crearGifOs.html?modo=misgifos" class= "font-color mis-guifos">Mis Guifos</a>
         </div>
         </nav>
-
+    </div>
+    </header>
+    <div class="margen"> 
         <div class="box">
             <div class="nav-bar"> <p class="font-bar-search">Buscar</p></div>
                 <div class="container-1">
                     <input type="search" id="search" class="search-box" placeholder= "    Busca gifs, hashtags, temas, busca lo que quieras…" />
-                    <button class="btn-search">Buscar</button>
+                    <button class="btn-search default"  id="btn-busq" onclick="AddClass('btn-busq', 'active')">Buscar</button>
                 </div>
         </div>
         <div id="placeholder-search"></div>
@@ -51,11 +53,14 @@
     </template>
 
         <section class="gifs">
-            <div id="giphy"></div>
+                <div class="display-none" id="header-search">
+                    <p class="font-header-section" id="search-text"></p>
+                </div>
+                <div id="giphy"></div>
         </section>
 
 
-        <section class="random">
+        <section class="random" id="random">
             <div class="header-section">
                 <p class="font-header-section">Hoy te sugerimos:</p>
             </div>
@@ -84,7 +89,7 @@
 
         </section>
         
-        <section class="trending-gifs">
+        <section class="trending-gifs" id="trending-gifs">
             <div class="header-section">
                 <p class="font-header-section">Tendencias:</p>
             </div>
@@ -92,7 +97,7 @@
         </section>
 
   
-    </header>
+    
 <script src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/JavaScript/main.js"></script>
     </div>    
 

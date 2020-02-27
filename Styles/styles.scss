@@ -7,6 +7,7 @@
 @import "/Users/valeria/Desktop/Acamica/Proyecto GifOS/Styles/video.scss";
 
 $font: "Chakra Petch", sans-serif;
+$doted: 1px solid #110038;
 
 $color-scheme: (
     principal,
@@ -21,8 +22,9 @@ $color-scheme: (
     (inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d),
     #e6e6e6,
     (inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff),
-    #F0F0F0,
-    #FFF4FD
+    #f0f0f0,
+    #fff4fd,
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa.svg")
   ),
   (
     dark,
@@ -37,8 +39,9 @@ $color-scheme: (
     (inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #110038),
     #b4b4b4,
     (inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff),
-    #CCCCCC,
-    #2E32FB
+    #cccccc,
+    #2e32fb,
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_light.svg")
   );
 
 @mixin get_theme(
@@ -55,20 +58,44 @@ $color-scheme: (
   $box-background,
   $box-shadow,
   $inside-box,
-  $hover-box
+  $hover-box,
+  $change-lupa
 ) {
   body.#{$name} {
     background-color: $background;
     .logo-1 {
       background-image: $icon;
     }
-    .theme-select {
+
+    .select-box {
+      .theme-select {
+        background: $color-button;
+      }
+      .dropdown-content {
+        background: $box-background;
+        box-shadow: $box-shadow;
+
+        .theme-pick {
+          background: $inside-box;
+
+          &:active,
+          &:hover {
+            background-color: $hover-box;
+            border: $doted;
+            outline: 1px dotted #110038;
+            outline-offset: -4px;
+          }
+        }
+        .selected {
+          background-color: $hover-box;
+        }
+      }
+    }
+
+    .btn {
       background: $color-button;
     }
-    .btn{
-      background: $color-button;
-    }
-    .font-color, .theme-select{
+    .font-color {
       color: $font-color;
     }
     .nav-bar {
@@ -83,23 +110,28 @@ $color-scheme: (
       border: $border-section-header;
     }
 
-    .select-options{
-      background: $box-background;
-      box-shadow: $box-shadow;
-
-      div{
-        background: $inside-box;
-
-        &:active, &:hover{
-          background-color: $hover-box;
-          border: 1px solid #110038;
-
-        
-        }
-        .same-as-selected{
-          background-color: $hover-box;
-        }
-
+    .btn-search.change {
+      &:before {
+        content: $change-lupa;
+        height: 1.33rem;
+        width: 1.33rem;
+        text-align: center;
+        margin-right: 0.5rem;
+      }
+    }
+    .active {
+      background: $color-button;
+      border: $doted;
+      border: $doted;
+      outline: 1px dotted #110038;
+      outline-offset: -4px;
+      color: $font-color;
+      &:before {
+        content: $change-lupa;
+        height: 1.33rem;
+        width: 1.33rem;
+        text-align: center;
+        margin-right: 0.5rem;
       }
     }
 
@@ -108,15 +140,14 @@ $color-scheme: (
       box-shadow: $box-shadow;
     }
 
-    @include trending-item($search)
-
+    @include trending-item($search);
   }
-
 }
 
 @each $name, $background, $color-button, $icon, $search, $font-color,
   $color-button-2, $background-section-header, $border-section-header,
-  $shadow-section-header, $box-background, $box-shadow, $inside-box, $hover-box in $color-scheme
+  $shadow-section-header, $box-background, $box-shadow, $inside-box, $hover-box,
+  $change-lupa in $color-scheme
 {
   @include get_theme(
     $name,
@@ -132,7 +163,8 @@ $color-scheme: (
     $box-background,
     $box-shadow,
     $inside-box,
-    $hover-box
+    $hover-box,
+    $change-lupa
   );
 }
 
@@ -147,7 +179,7 @@ html {
   font-family: $font;
 }
 
-.body {
+.margen {
   margin-right: 7.58rem;
   margin-left: 7.58rem;
 }
@@ -158,4 +190,13 @@ html {
   background-repeat: no-repeat;
 }
 
+.theme-picker:hover,
+.btn-nav:hover {
+  border: $doted;
+  outline: 1px dotted #110038;
+  outline-offset: -4px;
+}
 
+.mis-guifos:hover{
+border: 1px dotted #110038;
+}

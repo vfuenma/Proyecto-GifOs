@@ -1,58 +1,54 @@
 .select-box {
-  position: relative; }
-  .select-box .theme-picker {
-    display: none; }
-
-.select-box {
+  position: relative;
+  display: inline-block;
   width: 12rem;
   margin-right: 1.33rem; }
-  .select-box .theme-select {
+  .select-box .theme-picker {
     border: 1px solid #110038;
-    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
     height: 3rem;
+    width: 11.92rem;
     cursor: pointer;
     text-align: left;
     padding: 7px 7px 7px 7px;
-    font-size: 1.33rem; }
-    .select-box .theme-select .select-options {
-      border: 1px solid #110038;
-      box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-      cursor: pointer; }
-    .select-box .theme-select:after {
+    font-size: 1.33rem;
+    font-family: "Chakra Petch", sans-serif; }
+    .select-box .theme-picker:after {
       position: absolute;
       content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/dropdown.svg");
-      margin-top: -7px;
       width: 36px;
-      height: 31px;
-      border-left: 1px solid #110038;
-      margin-left: 15px;
+      height: 34px;
+      border: 1px solid #110038;
       text-align: center;
-      padding-top: 4px; }
+      box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+      margin-left: 1.31rem;
+      margin-top: -0.73rem; }
+      .select-box .theme-picker:after:hover {
+        border: 1px solid #110038;
+        outline: 1px dotted #110038;
+        outline-offset: -4px; }
+  .select-box .dropdown-content {
+    display: none;
+    position: absolute;
+    overflow: auto;
+    z-index: 1;
+    width: 12rem;
+    margin-right: 1.33rem; }
+    .select-box .dropdown-content.show {
+      display: flex;
+      flex-direction: column; }
+    .select-box .dropdown-content button {
+      height: 3rem;
+      width: 10.5rem;
+      margin: 10px;
+      border: 1px solid #808080;
+      box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+      text-align: left;
+      padding: 7px 7px 7px 16px;
+      font-size: 1.33rem;
+      font-family: "Chakra Petch", sans-serif; }
 
-.select-hide {
-  display: none; }
-
-.select-options {
-  position: absolute;
-  width: 145px;
-  height: 102px; }
-  .select-options div {
-    height: 35px;
-    width: 125px;
-    margin: 10px;
-    border: 1px solid #808080;
-    box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-    text-align: left;
-    padding: 7px 7px 7px 16px;
-    font-size: 1.33rem; }
-
-.same-as-selected::first-letter {
+.selected::first-letter {
   text-decoration: underline; }
-
-.arrow {
-  width: 2rem;
-  height: 2rem;
-  align-self: center;
-  margin-right: 0.58rem; }
 
 /*# sourceMappingURL=select-box.css.map */

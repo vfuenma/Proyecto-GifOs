@@ -46,6 +46,9 @@
     color: #110038;
     letter-spacing: 0; }
 
+.font-color.mis-guifos::first-letter {
+  text-decoration: underline; }
+
 header .nav-bar-1 {
   width: 100%;
   height: 1, 92rem;
@@ -67,13 +70,14 @@ header .btn-bar-nav {
 
 .box {
   height: 8.25rem;
+  width: 100%;
   padding: 0.25rem 0.25rem; }
   .box .search-box {
     background: #ffffff;
     border: 1px solid #979797;
     box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
     height: 4rem;
-    width: 88.08rem;
+    width: 88.5%;
     margin-left: 1.25rem;
     font-size: 1.33rem;
     color: #b4b4b4;
@@ -133,7 +137,22 @@ header .btn-bar-nav {
   #trending .trending-item img {
     width: 100%;
     height: 100%; }
+    #trending .trending-item img:hover {
+      outline: 1px dotted #110038; }
   #trending .trending-item-wide {
+    grid-column: span 2; }
+
+#giphy {
+  display: grid;
+  margin-top: 1.33rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 24rem;
+  grid-auto-flow: dense;
+  grid-gap: 0.83rem; }
+  #giphy .trending-item img {
+    width: 100%;
+    height: 100%; }
+  #giphy .giphy-item-wide {
     grid-column: span 2; }
 
 .btn-nav {
@@ -150,11 +169,20 @@ header .btn-bar-nav {
   box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
   width: 8.5rem;
   height: 3rem;
-  font-size: 16px;
+  font-size: 1.33rem;
+  text-align: center;
+  align-self: center;
   color: #B4B4B4;
   letter-spacing: 0;
-  line-height: 18px;
+  line-height: 1.5rem;
   margin-right: 1.55rem; }
+
+.btn-search.default:before {
+  content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_inactive.svg");
+  height: 1.33rem;
+  width: 1.33rem;
+  text-align: center;
+  margin-right: 0.5rem; }
 
 .btn-2 {
   position: absolute;
@@ -172,6 +200,11 @@ header .btn-bar-nav {
   height: 23.33rem;
   width: 23.33rem;
   margin-left: 0.28rem; }
+  #sugerido-1:hover,
+  #sugerido-2:hover,
+  #sugerido-0:hover,
+  #sugerido-3:hover {
+    border: 1px dotted #110038; }
 
 .CrearGifos {
   display: flex;
@@ -227,61 +260,57 @@ header .btn-bar-nav {
         height: 3rem; }
 
 .select-box {
-  position: relative; }
-  .select-box .theme-picker {
-    display: none; }
-
-.select-box {
+  position: relative;
+  display: inline-block;
   width: 12rem;
   margin-right: 1.33rem; }
-  .select-box .theme-select {
+  .select-box .theme-picker {
     border: 1px solid #110038;
-    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
     height: 3rem;
+    width: 11.92rem;
     cursor: pointer;
     text-align: left;
     padding: 7px 7px 7px 7px;
-    font-size: 1.33rem; }
-    .select-box .theme-select .select-options {
-      border: 1px solid #110038;
-      box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-      cursor: pointer; }
-    .select-box .theme-select:after {
+    font-size: 1.33rem;
+    font-family: "Chakra Petch", sans-serif; }
+    .select-box .theme-picker:after {
       position: absolute;
       content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/dropdown.svg");
-      margin-top: -7px;
       width: 36px;
-      height: 31px;
-      border-left: 1px solid #110038;
-      margin-left: 15px;
+      height: 34px;
+      border: 1px solid #110038;
       text-align: center;
-      padding-top: 4px; }
+      box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+      margin-left: 1.31rem;
+      margin-top: -0.73rem; }
+      .select-box .theme-picker:after:hover {
+        border: 1px solid #110038;
+        outline: 1px dotted #110038;
+        outline-offset: -4px; }
+  .select-box .dropdown-content {
+    display: none;
+    position: absolute;
+    overflow: auto;
+    z-index: 1;
+    width: 12rem;
+    margin-right: 1.33rem; }
+    .select-box .dropdown-content.show {
+      display: flex;
+      flex-direction: column; }
+    .select-box .dropdown-content button {
+      height: 3rem;
+      width: 10.5rem;
+      margin: 10px;
+      border: 1px solid #808080;
+      box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+      text-align: left;
+      padding: 7px 7px 7px 16px;
+      font-size: 1.33rem;
+      font-family: "Chakra Petch", sans-serif; }
 
-.select-hide {
-  display: none; }
-
-.select-options {
-  position: absolute;
-  width: 145px;
-  height: 102px; }
-  .select-options div {
-    height: 35px;
-    width: 125px;
-    margin: 10px;
-    border: 1px solid #808080;
-    box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-    text-align: left;
-    padding: 7px 7px 7px 16px;
-    font-size: 1.33rem; }
-
-.same-as-selected::first-letter {
+.selected::first-letter {
   text-decoration: underline; }
-
-.arrow {
-  width: 2rem;
-  height: 2rem;
-  align-self: center;
-  margin-right: 0.58rem; }
 
 .video-div {
   width: 100%;
@@ -316,6 +345,18 @@ header .btn-bar-nav {
       background: #ffffff;
       border: 1px solid #979797;
       box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000; }
+    .video-div .container-video .botones-enviar-gif {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 0.5rem;
+      position: relative; }
+      .video-div .container-video .botones-enviar-gif .send {
+        width: 12rem;
+        height: 3rem;
+        border: 1px solid #110038;
+        box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+        margin-right: 1.17rem; }
     .video-div .container-video .botones-grabar {
       display: flex;
       justify-content: flex-end;
@@ -328,6 +369,15 @@ header .btn-bar-nav {
         box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
         width: 12rem;
         height: 3.2rem; }
+        .video-div .container-video .botones-grabar .btn-record:hover {
+          border: 1px solid #110038;
+          outline: 1px dotted #110038;
+          outline-offset: -4px; }
+
+.btn-crear-gifo:hover {
+  border: 1px solid #110038;
+  outline: 1px dotted #110038;
+  outline-offset: -4px; }
 
 .display-none {
   display: none; }
@@ -360,11 +410,23 @@ body.principal {
   background-color: #fdf4fc; }
   body.principal .logo-1 {
     background-image: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo.png"); }
-  body.principal .theme-select {
+  body.principal .select-box .theme-select {
     background: #f7c9f3; }
+  body.principal .select-box .dropdown-content {
+    background: #e6e6e6;
+    box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff; }
+    body.principal .select-box .dropdown-content .theme-pick {
+      background: #f0f0f0; }
+      body.principal .select-box .dropdown-content .theme-pick:active, body.principal .select-box .dropdown-content .theme-pick:hover {
+        background-color: #fff4fd;
+        border: 1px solid #110038;
+        outline: 1px dotted #110038;
+        outline-offset: -4px; }
+    body.principal .select-box .dropdown-content .selected {
+      background-color: #fff4fd; }
   body.principal .btn {
     background: #f7c9f3; }
-  body.principal .font-color, body.principal .theme-select {
+  body.principal .font-color {
     color: #110038; }
   body.principal .nav-bar {
     background-image: linear-gradient(270deg, #f7c9f3 0%, #4180f6 100%); }
@@ -374,16 +436,25 @@ body.principal {
     background: #fffafe;
     box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d;
     border: 1px solid #e6bbe2; }
-  body.principal .select-options {
-    background: #e6e6e6;
-    box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff; }
-    body.principal .select-options div {
-      background: #F0F0F0; }
-      body.principal .select-options div:active, body.principal .select-options div:hover {
-        background-color: #FFF4FD;
-        border: 1px solid #110038; }
-      body.principal .select-options div .same-as-selected {
-        background-color: #FFF4FD; }
+  body.principal .btn-search.change:before {
+    content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa.svg");
+    height: 1.33rem;
+    width: 1.33rem;
+    text-align: center;
+    margin-right: 0.5rem; }
+  body.principal .active {
+    background: #f7c9f3;
+    border: 1px solid #110038;
+    border: 1px solid #110038;
+    outline: 1px dotted #110038;
+    outline-offset: -4px;
+    color: #110038; }
+    body.principal .active:before {
+      content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa.svg");
+      height: 1.33rem;
+      width: 1.33rem;
+      text-align: center;
+      margin-right: 0.5rem; }
   body.principal .box {
     background: #e6e6e6;
     box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff; }
@@ -405,11 +476,23 @@ body.dark {
   background-color: #0f0135; }
   body.dark .logo-1 {
     background-image: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo_dark.png"); }
-  body.dark .theme-select {
+  body.dark .select-box .theme-select {
     background: #ee3efe; }
+  body.dark .select-box .dropdown-content {
+    background: #b4b4b4;
+    box-shadow: inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff; }
+    body.dark .select-box .dropdown-content .theme-pick {
+      background: #cccccc; }
+      body.dark .select-box .dropdown-content .theme-pick:active, body.dark .select-box .dropdown-content .theme-pick:hover {
+        background-color: #2e32fb;
+        border: 1px solid #110038;
+        outline: 1px dotted #110038;
+        outline-offset: -4px; }
+    body.dark .select-box .dropdown-content .selected {
+      background-color: #2e32fb; }
   body.dark .btn {
     background: #ee3efe; }
-  body.dark .font-color, body.dark .theme-select {
+  body.dark .font-color {
     color: #ffffff; }
   body.dark .nav-bar {
     background-image: linear-gradient(270deg, #ee3efe 0%, #2e32fb 100%); }
@@ -419,16 +502,25 @@ body.dark {
     background: #fffafe;
     box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #110038;
     border: 1px solid #2e32fb; }
-  body.dark .select-options {
-    background: #b4b4b4;
-    box-shadow: inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff; }
-    body.dark .select-options div {
-      background: #CCCCCC; }
-      body.dark .select-options div:active, body.dark .select-options div:hover {
-        background-color: #2E32FB;
-        border: 1px solid #110038; }
-      body.dark .select-options div .same-as-selected {
-        background-color: #2E32FB; }
+  body.dark .btn-search.change:before {
+    content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_light.svg");
+    height: 1.33rem;
+    width: 1.33rem;
+    text-align: center;
+    margin-right: 0.5rem; }
+  body.dark .active {
+    background: #ee3efe;
+    border: 1px solid #110038;
+    border: 1px solid #110038;
+    outline: 1px dotted #110038;
+    outline-offset: -4px;
+    color: #ffffff; }
+    body.dark .active:before {
+      content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_light.svg");
+      height: 1.33rem;
+      width: 1.33rem;
+      text-align: center;
+      margin-right: 0.5rem; }
   body.dark .box {
     background: #b4b4b4;
     box-shadow: inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff; }
@@ -455,7 +547,7 @@ html {
   font-size: 12px;
   font-family: "Chakra Petch", sans-serif; }
 
-.body {
+.margen {
   margin-right: 7.58rem;
   margin-left: 7.58rem; }
 
@@ -463,5 +555,14 @@ html {
   width: 8.55rem;
   height: 5.33rem;
   background-repeat: no-repeat; }
+
+.theme-picker:hover,
+.btn-nav:hover {
+  border: 1px solid #110038;
+  outline: 1px dotted #110038;
+  outline-offset: -4px; }
+
+.mis-guifos:hover {
+  border: 1px dotted #110038; }
 
 /*# sourceMappingURL=styles.css.map */
