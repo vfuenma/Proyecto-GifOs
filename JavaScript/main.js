@@ -3,6 +3,16 @@ const randomUrl = "http://api.giphy.com/v1/gifs/random?";
 const searchUrl = "http://api.giphy.com/v1/gifs/search?";
 const trendingUrl = "http://api.giphy.com/v1/gifs/trending?";
 
+function confTema(){
+  let tema = localStorage.getItem("tema");
+  if (tema === "dark"){
+    changeThemeDark()
+  }else{
+    changeThemePrincipal();
+  }
+};
+confTema();
+
 function AddClass(Selector, ClassName) {
   document.getElementById(Selector).classList.add(ClassName);
 }
@@ -182,6 +192,7 @@ function mostrarSugeridos() {
 
 mostrarSugeridos();
 
+
 function changeThemeDark(){
 const themeDark = document.getElementById("dark");
 const themePrincipal = document.getElementById("principal");
@@ -190,6 +201,8 @@ themeDark.classList.add("selected");
 const body = document.getElementsByTagName("body")[0];
 let selectedTheme = themeDark.value;
 body.className = selectedTheme;
+localStorage.setItem("tema", "dark")
+
 }
 
 function changeThemePrincipal(){
@@ -200,6 +213,7 @@ function changeThemePrincipal(){
   const body = document.getElementsByTagName("body")[0];
   let selectedTheme = themePrincipal.value;
   body.className = selectedTheme;
+  localStorage.setItem("tema", "principal")
 }
 
 

@@ -1,105 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Proyecto GifOS</title>
-    <link href="Styles/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
+    <link href="Styles/styles.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/87685218d8.js"
-      crossorigin="anonymous">
-    </script>
-</head>
-<body class="principal">
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="principal">
     <header class="header">
-        <div class= "nav-bar nav-bar-1">
-            <p class="font-nav">¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</p>
-        </div>
+      <div class="nav-bar nav-bar-1">
+        <p class="font-nav">
+          ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número
+          de visitas: 12.765.803
+        </p>
+      </div>
       <div class="margen">
         <nav class="nav-1">
-            <div class="logo-1"></div>
-            <div class= "btn-bar-nav">
-            <a href= "crearGifOs.html?modo=crear" class= "btn btn-nav font-color">Crear Guifos</a>
+          <div class="logo-1"></div>
+          <div class="btn-bar-nav">
+            <a href="crearGifOs.html?modo=crear" class="btn btn-nav font-color"
+              >Crear Guifos</a
+            >
             <div class="select-box">
-                <button onclick="Dropdown()" class="theme-picker theme-select font-color">Elegir tema</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <button onclick="changeThemePrincipal()" id="principal" value="principal" class="theme-pick font-color"> Sailor day</button> 
-                    <button onclick="changeThemeDark()" id="dark" value="dark" class="theme-pick font-color">Sailor night</button>
-                  </div>
+              <button
+                onclick="Dropdown()"
+                class="theme-picker theme-select font-color"
+              >
+                Elegir tema
+              </button>
+              <div id="myDropdown" class="dropdown-content">
+                <button
+                  onclick="changeThemePrincipal()"
+                  id="principal"
+                  value="principal"
+                  class="theme-pick font-color"
+                >
+                  Sailor day
+                </button>
+                <button
+                  onclick="changeThemeDark()"
+                  id="dark"
+                  value="dark"
+                  class="theme-pick font-color"
+                >
+                  Sailor night
+                </button>
+              </div>
             </div>
-            <a href="crearGifOs.html?modo=misgifos" class= "font-color mis-guifos">Mis Guifos</a>
-        </div>
+            <a
+              href="crearGifOs.html?modo=misgifos"
+              class="font-color mis-guifos"
+              >Mis Guifos</a
+            >
+          </div>
         </nav>
-    </div>
+      </div>
     </header>
-    <div class="margen"> 
-        <div class="box">
-            <div class="nav-bar"> <p class="font-bar-search">Buscar</p></div>
-                <div class="container-1">
-                    <input type="search" id="search" class="search-box" placeholder= "    Busca gifs, hashtags, temas, busca lo que quieras…" />
-                    <button class="btn-search default"  id="btn-busq" onclick="AddClass('btn-busq', 'active')">Buscar</button>
-                </div>
+    <div class="margen">
+      <div class="box">
+        <div class="nav-bar"><p class="font-bar-search">Buscar</p></div>
+        <div class="container-1">
+          <input
+            type="search"
+            id="search"
+            class="search-box"
+            placeholder="    Busca gifs, hashtags, temas, busca lo que quieras…"
+          />
+          <button
+            class="btn-search default"
+            id="btn-busq"
+            onclick="AddClass('btn-busq', 'active')"
+          >
+            Buscar
+          </button>
         </div>
-        <div id="placeholder-search"></div>
-        <template id="busquedas-template">
+      </div>
+      <div id="placeholder-search"></div>
+      <template id="busquedas-template">
         <div class="busquedas-sugeridas">
-            <buttom class="boton-busqueda" onclick="buscarSugerencia('sailor moon')">Sailor moon</buttom>
-            <buttom class="boton-busqueda" onclick="buscarSugerencia('puppies')">Puppies </buttom>
-            <buttom class="boton-busqueda" onclick="buscarSugerencia('power rangers')">Power Rangers</buttom>
-
+          <buttom
+            class="boton-busqueda"
+            onclick="buscarSugerencia('sailor moon')"
+            >Sailor moon</buttom
+          >
+          <buttom class="boton-busqueda" onclick="buscarSugerencia('puppies')"
+            >Puppies
+          </buttom>
+          <buttom
+            class="boton-busqueda"
+            onclick="buscarSugerencia('power rangers')"
+            >Power Rangers</buttom
+          >
         </div>
-    </template>
+      </template>
 
-        <section class="gifs">
-                <div class="display-none" id="header-search">
-                    <p class="font-header-section" id="search-text"></p>
-                </div>
-                <div id="giphy"></div>
-        </section>
+      <section class="gifs">
+        <div class="display-none" id="header-search">
+          <p class="font-header-section" id="search-text"></p>
+        </div>
+        <div id="giphy"></div>
+      </section>
 
+      <section class="random" id="random">
+        <div class="header-section">
+          <p class="font-header-section">Hoy te sugerimos:</p>
+        </div>
+        <div class="container-1">
+          <div class="div-random">
+            <header class="nav-bar">
+              <p id="title-0" class="font-gif"></p>
+              <img
+                src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg"
+                class="close-btn"
+              />
+            </header>
+            <img id="sugerido-0" src="" alt="" />
+            <button class="btn-2 font-btn-gif">Ver más</button>
+          </div>
+          <div class="div-random">
+            <header class="nav-bar">
+              <p id="title-1" class="font-gif"></p>
+              <img
+                src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg"
+                class="close-btn"
+              />
+            </header>
+            <img id="sugerido-1" src="" alt="" />
+            <button class="btn-2 font-btn-gif">Ver más</button>
+          </div>
+          <div class="div-random">
+            <header class="nav-bar">
+              <p id="title-2" class="font-gif"></p>
+              <img
+                src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg"
+                class="close-btn"
+              />
+            </header>
+            <img id="sugerido-2" src="" alt="" />
+            <button class="btn-2 font-btn-gif">Ver más</button>
+          </div>
+          <div class="div-random">
+            <header class="nav-bar">
+              <p id="title-3" class="font-gif"></p>
+              <img
+                src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg"
+                class="close-btn"
+              />
+            </header>
+            <img id="sugerido-3" src="" alt="" />
+            <button class="btn-2 font-btn-gif">Ver más</button>
+          </div>
+        </div>
+      </section>
 
-        <section class="random" id="random">
-            <div class="header-section">
-                <p class="font-header-section">Hoy te sugerimos:</p>
-            </div>
-            <div class="container-1">
-                <div class="div-random">
-                    <header class="nav-bar"><p id="title-0" class="font-gif"></p> <img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg" class="close-btn"></header>
-                    <img id="sugerido-0" src="" alt="">
-                    <button class="btn-2 font-btn-gif">Ver más</button>
-                </div> 
-                <div class="div-random">
-                    <header class="nav-bar"><p id="title-1" class="font-gif"></p><img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg" class="close-btn"></header>
-                    <img id="sugerido-1" src="" alt=""> 
-                    <button class="btn-2 font-btn-gif">Ver más</button>
-                </div> 
-                <div class="div-random">
-                    <header class="nav-bar"><p id="title-2" class="font-gif"></p><img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg" class="close-btn"></header>
-                    <img id="sugerido-2" src="" alt="">
-                    <button class="btn-2 font-btn-gif">Ver más</button>
-                </div> 
-                <div class=div-random>
-                    <header class="nav-bar"> <p id="title-3" class="font-gif"></p><img src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button close.svg" class="close-btn"></header>
-                    <img id="sugerido-3" src="" alt="">
-                    <button class="btn-2 font-btn-gif">Ver más</button>
-                </div> 
-            </div>
+      <section class="trending-gifs" id="trending-gifs">
+        <div class="header-section">
+          <p class="font-header-section">Tendencias:</p>
+        </div>
+        <div id="trending"></div>
+      </section>
 
-        </section>
-        
-        <section class="trending-gifs" id="trending-gifs">
-            <div class="header-section">
-                <p class="font-header-section">Tendencias:</p>
-            </div>
-            <div id="trending"></div>
-        </section>
-
-  
-    
-<script src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/JavaScript/main.js"></script>
-    </div>    
-
-</body>
+      <script src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/JavaScript/main.js"></script>
+    </div>
+  </body>
 </html>

@@ -33,6 +33,112 @@
       }
     }
 
+    .Cargar-items {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5rem;
+      width: 69.83rem;
+      height: 36.67rem;
+      background: #ffffff;
+      border: 1px solid #979797;
+      box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+      p {
+        font-size: 16px;
+        color: #110038;
+        letter-spacing: 0;
+        text-align: center;
+        line-height: 22px;
+        font-weight: bold;
+        margin-bottom: 3.42rem;
+        margin-top: 0.67rem;
+      }
+      .letra-peq {
+        font-size: 1rem;
+        color: rgba(17, 0, 56, 0.64);
+        letter-spacing: 0;
+        text-align: center;
+        line-height: 14px;
+      }
+      .barra {
+        width: 25.93rem;
+        height: 1.67rem;
+        background: #999999;
+        box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #fffcfc;
+        margin-bottom: 0.83rem;
+        position: relative;
+
+        .cuadritos {
+          display: flex;
+          position: absolute;
+          top: 2px;
+          left: 2px;
+        }
+
+        .cuadritos > span {
+          width: 0.92rem;
+          height: 1.3rem;
+          background: transparent;
+          margin-left: 0.15rem;
+          border-right: 1px solid #b4b4b4;
+        }
+      }
+    }
+    .loading {
+      height: 1.3rem;
+      background-color: #f7c9f3;
+      position: absolute;
+      left: 2px;
+      top: 2px;
+    }
+
+    @keyframes loader {
+      0% {
+        width: 0;
+      }
+
+      20% {
+        width: 10%;
+      }
+
+      25% {
+        width: 24%;
+      }
+
+      43% {
+        width: 41%;
+      }
+
+      56% {
+        width: 50%;
+      }
+
+      66% {
+        width: 52%;
+      }
+
+      71% {
+        width: 60%;
+      }
+
+      75% {
+        width: 76%;
+      }
+
+      94% {
+        width: 86%;
+      }
+
+      100% {
+        width: 100%;
+      }
+    }
+
+    .animacion {
+      animation: loader 8s ease-in-out infinite;
+    }
+
     video {
       margin: 0.5rem;
       width: 69.83rem;
@@ -41,21 +147,20 @@
       border: 1px solid #979797;
       box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
     }
-    .botones-enviar-gif{
+    .botones-send {
       display: flex;
       justify-content: flex-end;
       align-items: center;
       margin-right: 0.5rem;
       position: relative;
 
-      .send{
+      .send {
         width: 12rem;
         height: 3rem;
         border: 1px solid #110038;
         box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
         margin-right: 1.17rem;
       }
-
     }
     .botones-grabar {
       display: flex;
@@ -65,29 +170,26 @@
       position: relative;
 
       .btn-record {
-        background: #f7c9f3;
         border: 1px solid #110038;
         box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
         width: 12rem;
         height: 3.2rem;
 
-        &:hover{
+        &:hover {
           border: 1px solid #110038;
-            outline: 1px dotted #110038;
-            outline-offset: -4px;
+          outline: 1px dotted #110038;
+          outline-offset: -4px;
         }
       }
     }
   }
 }
 
-.btn-crear-gifo:hover{
-    border: 1px solid #110038;
-      outline: 1px dotted #110038;
-      outline-offset: -4px;
+.btn-crear-gifo:hover {
+  border: 1px solid #110038;
+  outline: 1px dotted #110038;
+  outline-offset: -4px;
 }
-
-
 
 .display-none {
   display: none;
@@ -104,9 +206,8 @@
 .botones-grabar.show {
   &::before {
     padding: 0.66rem;
-    content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera.svg");
+    // content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera.svg");
     text-align: center;
-    background: #f7c9f3;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
     display: inline-block;
@@ -121,5 +222,36 @@
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #993a3a, inset 1px 1px 0 0 #ffffff;
     display: inline-block;
+  }
+}
+
+.elem-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .logo-1 {
+    margin-left: 1.25rem;
+  }
+}
+
+.botones-enviar-gif {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0.92rem;
+  .timer {
+    height: 3rem;
+    width: 10.33rem;
+    background: #ffffff;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+
+    .set-time {
+      font-size: 16px;
+      color: #110038;
+      letter-spacing: 0;
+      line-height: 22px;
+      text-align: center;
+    }
   }
 }

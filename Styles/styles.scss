@@ -24,7 +24,8 @@ $color-scheme: (
     (inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff),
     #f0f0f0,
     #fff4fd,
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa.svg")
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa.svg"),
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera.svg")
   ),
   (
     dark,
@@ -41,7 +42,8 @@ $color-scheme: (
     (inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff),
     #cccccc,
     #2e32fb,
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_light.svg")
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_light.svg"),
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera_light.svg")
   );
 
 @mixin get_theme(
@@ -59,7 +61,8 @@ $color-scheme: (
   $box-shadow,
   $inside-box,
   $hover-box,
-  $change-lupa
+  $change-lupa,
+  $change-cam
 ) {
   body.#{$name} {
     background-color: $background;
@@ -67,6 +70,18 @@ $color-scheme: (
       background-image: $icon;
     }
 
+
+    .send{
+      background: $inside-box;
+      &:active,
+      &:hover {
+        background-color: $hover-box;
+        border: $doted;
+        outline: 1px dotted #110038;
+        outline-offset: -4px;
+      }
+
+    }
     .select-box {
       .theme-select {
         background: $color-button;
@@ -74,6 +89,7 @@ $color-scheme: (
       .dropdown-content {
         background: $box-background;
         box-shadow: $box-shadow;
+
 
         .theme-pick {
           background: $inside-box;
@@ -109,14 +125,20 @@ $color-scheme: (
       box-shadow: $shadow-section-header;
       border: $border-section-header;
     }
+    .botones-grabar.show {
+      &::before {
+        content: $change-cam;
+        background: $color-button;
+      }}
 
     .btn-search.change {
       &:before {
-        content: $change-lupa;
+        content: url($change-lupa);
         height: 1.33rem;
         width: 1.33rem;
         text-align: center;
         margin-right: 0.5rem;
+        background-color: $color-button;
       }
     }
     .active {
@@ -147,7 +169,7 @@ $color-scheme: (
 @each $name, $background, $color-button, $icon, $search, $font-color,
   $color-button-2, $background-section-header, $border-section-header,
   $shadow-section-header, $box-background, $box-shadow, $inside-box, $hover-box,
-  $change-lupa in $color-scheme
+  $change-lupa, $change-cam in $color-scheme
 {
   @include get_theme(
     $name,
@@ -164,7 +186,8 @@ $color-scheme: (
     $box-shadow,
     $inside-box,
     $hover-box,
-    $change-lupa
+    $change-lupa,
+    $change-cam
   );
 }
 

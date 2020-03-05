@@ -7,6 +7,20 @@ let PlayVideo = document.getElementById("video-upload");
 let videoBlob;
 let gifBlob;
 let blob;
+let countDownDate;
+
+
+function confTema(){
+  let tema = localStorage.getItem("tema");
+  if (tema === "dark"){
+    changeThemeDark()
+  }else{
+    changeThemePrincipal();
+  }
+};
+confTema();
+
+
 function startVideo() {
   openVideo();
   getVideoAndRecord();
@@ -90,8 +104,9 @@ async function StartRecordButton() {
   AddClass("title-1", "display-none");
   RemoveClass("title-2", "display-none");
   AddClass("title-2", "font-nav");
-  horaComienzo = new Date().getTime();
+  countDownDate = new Date().getTime();
 
+ 
   try {
     recorder.startRecording();
   } catch (e) {
@@ -108,6 +123,8 @@ function stopRecordButton() {
     blobs = recorder.getBlob();
     videoBlob = blobs.video;
     gifBlob = blobs.gif;
+    Time();
+  
     try {
       PlayVideo.src = window.URL.createObjectURL(videoBlob);
     } catch (err) {
@@ -124,7 +141,13 @@ function stopRecordButton() {
 }
 
 function uploadGif() {
-  console.log(gifBlob);
+  RemoveClass("subiendo", "display-none");
+  AddClass("subiendo", "Cargar-items");
+  AddClass("video-upload", "display-none");
+  RemoveClass("button-send","botones-enviar-gif" )
+  AddClass("button-send", "display-none");
+  
+  // console.log(gifBlob);
   let form = new FormData();
   form.append("file", gifBlob, "myGif.gif");
   form.append("api_key", APIKEY);
@@ -153,15 +176,15 @@ function uploadGif() {
   return found;
 }
 
-function cancelarSubida() {
-  console.log("se cancela la subida");
-  //escondo el cartel de subida
-  mostEsconComponet(document.getElementById("cartel-subida"), esconder);
+// function cancelarSubida() {
+//   console.log("se cancela la subida");
+//   //escondo el cartel de subida
+//   mostEsconComponet(document.getElementById("cartel-subida"), esconder);
 
-  //llamo a la funcion que recaptura
-  vistaPreviaVideo();
-  recapturar();
-}
+//   //llamo a la funcion que recaptura
+//   vistaPreviaVideo();
+//   recapturar();
+// }
 
 function renderizarModoCrear() {
   const templateCrear = document.getElementById("new-gifOs");
@@ -177,6 +200,77 @@ function renderizarModoMisGifos() {
   const divMisGifos = document.getElementsByClassName("CrearGifs")[0];
   divMisGifos.innerHTML = templateMisGuifos.innerHTML;
 }
+
+
+function changeThemeDark(){
+  const themeDark = document.getElementById("dark");
+  const themePrincipal = document.getElementById("principal");
+  themePrincipal.classList.remove("selected");
+  themeDark.classList.add("selected");
+  const body = document.getElementsByTagName("body")[0];
+  let selectedTheme = themeDark.value;
+  body.className = selectedTheme;
+  localStorage.setItem("tema", "dark")
+  
+  }
+  
+  function changeThemePrincipal(){
+    const themePrincipal = document.getElementById("principal");
+    const themeDark = document.getElementById("dark");
+    themePrincipal.classList.add("selected");
+    themeDark.classList.remove("selected");
+    const body = document.getElementsByTagName("body")[0];
+    let selectedTheme = themePrincipal.value;
+    body.className = selectedTheme;
+    localStorage.setItem("tema", "principal")
+  };
+  
+  function Dropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  
+  };
+
+
+  function Time() {
+    if (!recorder) {
+        return;
+    }
+
+    document.getElementById('set-time').innerText = calculateTime((new Date().getTime() - countDownDate) / 1000);
+
+    // setTimeout(Time, 1000);
+
+}
+
+function calculateTime(segundos) {
+
+  // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  // var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  // var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  // var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+    var hr = Math.floor(segundos / 3600);
+    var min = Math.floor((segundos - (hr * 3600)) / 60);
+    var seg = Math.floor(segundos - (hr * 3600) - (min * 60));
+
+    if (min < 10) {
+        min = "0"  + min;
+    }
+
+    if (seg < 10) {
+        seg = "0"  + seg;
+    }
+
+    if (hr <= 0) {
+        return "00" + ':' + min + ':' + seg;
+    }
+
+    return hr + ':' + min + ':' + seg;
+}
+
+
+  
 
 // function guandarGifLocalStorage(id) {
 //   //traigo el gif conpleto con este id
