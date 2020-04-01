@@ -25,7 +25,8 @@ $color-scheme: (
     #f0f0f0,
     #fff4fd,
     url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa.svg"),
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera.svg")
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera.svg"),
+    #F7C9F3
   ),
   (
     dark,
@@ -43,7 +44,8 @@ $color-scheme: (
     #cccccc,
     #2e32fb,
     url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_light.svg"),
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera_light.svg")
+    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera_light.svg"),
+    #EE3EFE
   );
 
 @mixin get_theme(
@@ -62,7 +64,8 @@ $color-scheme: (
   $inside-box,
   $hover-box,
   $change-lupa,
-  $change-cam
+  $change-cam,
+  $loading
 ) {
   body.#{$name} {
     background-color: $background;
@@ -108,6 +111,9 @@ $color-scheme: (
       }
     }
 
+    .btn-cancel{
+      background: $hover-box;
+    }
     .btn {
       background: $color-button;
     }
@@ -162,6 +168,14 @@ $color-scheme: (
       box-shadow: $box-shadow;
     }
 
+    .send-guifos{
+      background-color: $hover-box;
+    }
+
+    .loading{
+      background-color: $loading;
+    }
+
     @include trending-item($search);
   }
 }
@@ -169,7 +183,7 @@ $color-scheme: (
 @each $name, $background, $color-button, $icon, $search, $font-color,
   $color-button-2, $background-section-header, $border-section-header,
   $shadow-section-header, $box-background, $box-shadow, $inside-box, $hover-box,
-  $change-lupa, $change-cam in $color-scheme
+  $change-lupa, $change-cam, $loading in $color-scheme
 {
   @include get_theme(
     $name,
@@ -187,7 +201,8 @@ $color-scheme: (
     $inside-box,
     $hover-box,
     $change-lupa,
-    $change-cam
+    $change-cam,
+    $loading
   );
 }
 

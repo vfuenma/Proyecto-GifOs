@@ -1,5 +1,6 @@
 const APIKEY = "hpWd6JPs0tVTz4TVIOvoPo6H8pi9Elsy";
 const apiUrl = "http://upload.giphy.com/v1/gifs";
+const idApi = "https://api.giphy.com/v1/gifs/";
 let recorder;
 let blobs;
 let video = document.getElementById("video");
@@ -8,18 +9,17 @@ let videoBlob;
 let gifBlob;
 let blob;
 let countDownDate;
+const gifUpload = document.getElementById("saved-gifs");
 
-
-function confTema(){
+function confTema() {
   let tema = localStorage.getItem("tema");
-  if (tema === "dark"){
-    changeThemeDark()
-  }else{
+  if (tema === "dark") {
+    changeThemeDark();
+  } else {
     changeThemePrincipal();
   }
-};
+}
 confTema();
-
 
 function startVideo() {
   openVideo();
@@ -46,8 +46,6 @@ if (modo === "crear") {
   renderizarModoMisGifos();
 }
 
-//Abrir el video
-
 function openVideo() {
   const divCrear = document.getElementsByClassName("CrearGifos")[0];
   const divMisGifos = document.getElementsByClassName("CrearGifs")[0];
@@ -58,7 +56,6 @@ function openVideo() {
   divCrear.innerHTML = null;
 }
 
-//Obtener el video y grabar
 function getVideoAndRecord() {
   video = document.getElementById("video");
   navigator.mediaDevices
@@ -92,7 +89,6 @@ function getVideoAndRecord() {
     });
 }
 
-//parar la grabación
 async function StartRecordButton() {
   this.disabled = true;
   AddClass("button-record", "display-none");
@@ -106,7 +102,6 @@ async function StartRecordButton() {
   AddClass("title-2", "font-nav");
   countDownDate = new Date().getTime();
 
- 
   try {
     recorder.startRecording();
   } catch (e) {
@@ -114,7 +109,6 @@ async function StartRecordButton() {
   }
 }
 
-//Vista previa de video
 function stopRecordButton() {
   recorder.stopRecording(function() {
     video.classList.add("display-none");
@@ -124,7 +118,7 @@ function stopRecordButton() {
     videoBlob = blobs.video;
     gifBlob = blobs.gif;
     Time();
-  
+
     try {
       PlayVideo.src = window.URL.createObjectURL(videoBlob);
     } catch (err) {
@@ -137,6 +131,9 @@ function stopRecordButton() {
     RemoveClass("button-play", "hide");
     RemoveClass("button-send", "display-none");
     AddClass("button-send", "botones-enviar-gif");
+    video.srcObject.getTracks().forEach(function(track) {
+      track.stop();
+    });
   });
 }
 
@@ -144,9 +141,27 @@ function uploadGif() {
   RemoveClass("subiendo", "display-none");
   AddClass("subiendo", "Cargar-items");
   AddClass("video-upload", "display-none");
-  RemoveClass("button-send","botones-enviar-gif" )
+  RemoveClass("button-send", "botones-enviar-gif");
   AddClass("button-send", "display-none");
-  
+  RemoveClass("btn-cancel", "display-none");
+  AddClass("btn-cancel", "btn-cancel");
+
+  setTimeout(
+    function() {
+      const divVideo = document.getElementsByClassName("video-div")[0];
+      const divUpload = document.getElementById("div-upload");
+      divVideo.innerHTML = divUpload.innerHTML;
+      let previewVideo = document.getElementById("preview-video");
+      const divMisGifos = document.getElementsByClassName("CrearGifs")[0];
+      const templateMisGuifos = document.getElementById("Mis-gifos");
+      // previewVideo.innerHTML = window.URL.createObjectURL(gifBlob);
+      previewVideo.src = window.URL.createObjectURL(videoBlob);
+      divMisGifos.innerHTML = templateMisGuifos.innerHTML;
+    },
+
+    8000
+  );
+
   // console.log(gifBlob);
   let form = new FormData();
   form.append("file", gifBlob, "myGif.gif");
@@ -157,8 +172,7 @@ function uploadGif() {
   const params = {
     method: "POST",
     body: form,
-    json: true,
-    // mode: 'no-cors'
+    json: true
   };
 
   const found = fetch(URL, params)
@@ -166,7 +180,7 @@ function uploadGif() {
       return response.json();
     })
     .then(datos => {
-      // guandarGifLocalStorage(datos.data.id);
+      saveGifLocalStorage(datos.data.id);
     })
 
     .catch(error => {
@@ -176,15 +190,21 @@ function uploadGif() {
   return found;
 }
 
-// function cancelarSubida() {
-//   console.log("se cancela la subida");
-//   //escondo el cartel de subida
-//   mostEsconComponet(document.getElementById("cartel-subida"), esconder);
+function repeatRecording() {
+  RemoveClass("subiendo", "Cargar-items");
+  AddClass("subiendo", "display-none");
+  RemoveClass("video-upload", "display-none");
+  RemoveClass("btn-cancel", "btn-cancel");
+  AddClass("btn-cancel", "display-none");
+  recorder.destroy();
+  recorder = null;
+  startVideo();
+}
 
-//   //llamo a la funcion que recaptura
-//   vistaPreviaVideo();
-//   recapturar();
-// }
+function cancelUpload() {
+  console.log("se cancela la subida");
+  location.reload();
+}
 
 function renderizarModoCrear() {
   const templateCrear = document.getElementById("new-gifOs");
@@ -199,10 +219,29 @@ function renderizarModoMisGifos() {
   const templateMisGuifos = document.getElementById("Mis-gifos");
   const divMisGifos = document.getElementsByClassName("CrearGifs")[0];
   divMisGifos.innerHTML = templateMisGuifos.innerHTML;
+
+  const Gallery = document.getElementById("gallery");
+ let gifos = getGifsFromLocalStorage();
+ // por cada url construir un elemento donde se vea ese gif
+ const gifosElements = gifos.map(gifo => buildGifoElement(gifo))
+
+Gallery.append(...gifosElements)
+}
+
+function buildGifoElement(gifo) {
+const gifoContainer = document.createElement("div");
+gifoContainer.className = "gifo-img";
+const imgGifo = document.createElement("img");
+imgGifo.src = gifo;
+gifoContainer.appendChild(imgGifo);
+  return gifoContainer;
 }
 
 
-function changeThemeDark(){
+
+
+
+function changeThemeDark() {
   const themeDark = document.getElementById("dark");
   const themePrincipal = document.getElementById("principal");
   themePrincipal.classList.remove("selected");
@@ -210,91 +249,78 @@ function changeThemeDark(){
   const body = document.getElementsByTagName("body")[0];
   let selectedTheme = themeDark.value;
   body.className = selectedTheme;
-  localStorage.setItem("tema", "dark")
-  
+  localStorage.setItem("tema", "dark");
+}
+
+function changeThemePrincipal() {
+  const themePrincipal = document.getElementById("principal");
+  const themeDark = document.getElementById("dark");
+  themePrincipal.classList.add("selected");
+  themeDark.classList.remove("selected");
+  const body = document.getElementsByTagName("body")[0];
+  let selectedTheme = themePrincipal.value;
+  body.className = selectedTheme;
+  localStorage.setItem("tema", "principal");
+}
+
+function Dropdown() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function Time() {
+  if (!recorder) {
+    return;
   }
-  
-  function changeThemePrincipal(){
-    const themePrincipal = document.getElementById("principal");
-    const themeDark = document.getElementById("dark");
-    themePrincipal.classList.add("selected");
-    themeDark.classList.remove("selected");
-    const body = document.getElementsByTagName("body")[0];
-    let selectedTheme = themePrincipal.value;
-    body.className = selectedTheme;
-    localStorage.setItem("tema", "principal")
-  };
-  
-  function Dropdown() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  
-  };
 
-
-  function Time() {
-    if (!recorder) {
-        return;
-    }
-
-    document.getElementById('set-time').innerText = calculateTime((new Date().getTime() - countDownDate) / 1000);
-
-    // setTimeout(Time, 1000);
-
+  document.getElementById("set-time").innerText = calculateTime(
+    (new Date().getTime() - countDownDate) / 1000
+  );
 }
 
 function calculateTime(segundos) {
+  var hr = Math.floor(segundos / 3600);
+  var min = Math.floor((segundos - hr * 3600) / 60);
+  var seg = Math.floor(segundos - hr * 3600 - min * 60);
 
-  // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  // var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  // var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  // var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  if (min < 10) {
+    min = "0" + min;
+  }
 
+  if (seg < 10) {
+    seg = "0" + seg;
+  }
 
-    var hr = Math.floor(segundos / 3600);
-    var min = Math.floor((segundos - (hr * 3600)) / 60);
-    var seg = Math.floor(segundos - (hr * 3600) - (min * 60));
+  if (hr <= 0) {
+    return "00" + ":" + min + ":" + seg;
+  }
 
-    if (min < 10) {
-        min = "0"  + min;
-    }
-
-    if (seg < 10) {
-        seg = "0"  + seg;
-    }
-
-    if (hr <= 0) {
-        return "00" + ':' + min + ':' + seg;
-    }
-
-    return hr + ':' + min + ':' + seg;
+  return hr + ":" + min + ":" + seg;
 }
 
+function saveGifLocalStorage(id) {
+  fetch(`${idApi}${id}?api_key=${APIKEY}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(dataGif => {
+      let url = dataGif.data.images.fixed_height.url;
+      let Gifs = getGifsFromLocalStorage();
+      Gifs.push(url);
+      localStorage.setItem("gifList", JSON.stringify(Gifs));
+    });
+}
 
-  
+function getGifsFromLocalStorage() {
+  const localStorageItem = localStorage.getItem("gifList");
+  return localStorageItem ? JSON.parse(localStorageItem) : [];
+}
 
-// function guandarGifLocalStorage(id) {
-//   //traigo el gif conpleto con este id
-//   fetch(buscarProId + id + '?' + '&api_key=' + apiKey)
-//       .then(response => {
-//           return response.json();
-//       })
-//       .then(dataGif => {
+function descargarGif() {
+  invokeSaveAsDialog(blob, "MyGif.gif");
+}
 
-//           let url = dataGif.data.images.downsized.url
-//               //guardar en elnace en el boton
-//           document.getElementById("btn-copiEnla").setAttribute("value", url);
+// function terminadoElGif() {
 
-//           //me fijo si hay algo guardado
-//           if (localStorage.getItem('GifList')) {
-//               //me traigo lo que hay en el llocal storage
-//               misGif = JSON.parse(localStorage.getItem('GifList'));
-//               // le agrego el nuevo valor
-//               misGif.push(url);
-//               //lo guardo de nuevo
-//               localStorage.setItem('GifList', JSON.stringify(misGif));
-//           } else {
-//               misGif.push(url);
-//               localStorage.setItem('GifList', JSON.stringify(misGif));
-//           }
-//       });
+//   mostEsconComponet(document.getElementById("cartel-muestr-desc"), esconder);
+//   window.location.replace("../mis-gif/mis-gif.html");
 // }
