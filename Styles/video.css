@@ -108,7 +108,8 @@
       justify-content: flex-end;
       align-items: center;
       margin-right: 0.5rem;
-      position: relative; }
+      position: relative;
+      font-size: 1.33rem; }
       .video-div .container-video .botones-send .send {
         width: 12rem;
         height: 3rem;
@@ -120,12 +121,14 @@
       justify-content: flex-end;
       align-items: center;
       margin-right: 0.5rem;
-      position: relative; }
+      position: relative;
+      font-size: 1.33rem; }
       .video-div .container-video .botones-grabar .btn-record {
         border: 1px solid #110038;
         box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
         width: 12rem;
-        height: 3.2rem; }
+        height: 3.2rem;
+        font-size: 1.33rem; }
         .video-div .container-video .botones-grabar .btn-record:hover {
           border: 1px solid #110038;
           outline: 1px dotted #110038;
@@ -134,7 +137,8 @@
 .btn-crear-gifo:hover {
   border: 1px solid #110038;
   outline: 1px dotted #110038;
-  outline-offset: -4px; }
+  outline-offset: -4px;
+  font-size: 1.33rem; }
 
 .display-none {
   display: none; }
@@ -179,11 +183,11 @@
     border: 1px solid #979797;
     box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000; }
     .botones-enviar-gif .timer .set-time {
-      font-size: 16px;
       color: #110038;
       letter-spacing: 0;
       line-height: 22px;
-      text-align: center; }
+      text-align: center;
+      font-size: 1.33rem; }
 
 .container-send-gif {
   width: 60rem;
@@ -214,7 +218,10 @@
         height: 3rem;
         border: 1px solid #110038;
         box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
-        margin-bottom: 1.17rem; }
+        margin-bottom: 1.17rem;
+        font-size: 1.33rem;
+        line-height: 18px;
+        font-weight: 300; }
   .container-send-gif .btn-listo {
     background: #f7c9f3;
     border: 1px solid #110038;
@@ -222,7 +229,10 @@
     margin-left: 45rem;
     margin-top: 5.8rem;
     width: 12rem;
-    height: 3rem; }
+    height: 3rem;
+    font-size: 1.33rem;
+    line-height: 18px;
+    font-weight: 300; }
 
 .gallery-gifos {
   display: grid;
@@ -235,6 +245,7 @@
     width: 100%;
     height: 100%; }
   .gallery-gifos .gifo-img:hover {
-    border: 1px dotted #110038; }
+    outline: 1px dotted #110038;
+    outline-offset: -4px; }
 
 /*# sourceMappingURL=video.css.map */

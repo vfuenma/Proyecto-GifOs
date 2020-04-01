@@ -25,7 +25,7 @@ function startVideo() {
   openVideo();
   getVideoAndRecord();
 }
-// Agregar y quitar clases
+
 function AddClass(Selector, ClassName) {
   document.getElementById(Selector).classList.add(ClassName);
 }
@@ -33,9 +33,8 @@ function RemoveClass(Selector, ClassName) {
   document.getElementById(Selector).classList.remove(ClassName);
 }
 
-//Mostrar o no Crear Guifos
 const queryString = window.location.search;
-let modo = new URLSearchParams(queryString).get("modo"); // puede ser 'crear' o 'misgifos' o nada
+let modo = new URLSearchParams(queryString).get("modo"); //
 if (!modo) {
   modo = "crear";
 }
@@ -76,9 +75,9 @@ function getVideoAndRecord() {
       });
 
       recorder.mediaType = {
-        audio: false, // or StereoAudioRecorder
-        video: true, // or WhammyRecorder
-        gif: true // or GifRecorder
+        audio: false,
+        video: true,
+        gif: true
       };
 
       video.play();
@@ -152,17 +151,13 @@ function uploadGif() {
       const divUpload = document.getElementById("div-upload");
       divVideo.innerHTML = divUpload.innerHTML;
       let previewVideo = document.getElementById("preview-video");
-      const divMisGifos = document.getElementsByClassName("CrearGifs")[0];
-      const templateMisGuifos = document.getElementById("Mis-gifos");
-      // previewVideo.innerHTML = window.URL.createObjectURL(gifBlob);
       previewVideo.src = window.URL.createObjectURL(videoBlob);
-      divMisGifos.innerHTML = templateMisGuifos.innerHTML;
+      renderizarModoMisGifos();
     },
 
     8000
   );
 
-  // console.log(gifBlob);
   let form = new FormData();
   form.append("file", gifBlob, "myGif.gif");
   form.append("api_key", APIKEY);
@@ -208,11 +203,9 @@ function cancelUpload() {
 
 function renderizarModoCrear() {
   const templateCrear = document.getElementById("new-gifOs");
-  const templateMisGuifos = document.getElementById("Mis-gifos");
   const divCrear = document.getElementsByClassName("CrearGifos")[0];
-  const divMisGifos = document.getElementsByClassName("CrearGifs")[0];
   divCrear.innerHTML = templateCrear.innerHTML;
-  divMisGifos.innerHTML = templateMisGuifos.innerHTML;
+  renderizarModoMisGifos();
 }
 
 function renderizarModoMisGifos() {
@@ -221,25 +214,21 @@ function renderizarModoMisGifos() {
   divMisGifos.innerHTML = templateMisGuifos.innerHTML;
 
   const Gallery = document.getElementById("gallery");
- let gifos = getGifsFromLocalStorage();
- // por cada url construir un elemento donde se vea ese gif
- const gifosElements = gifos.map(gifo => buildGifoElement(gifo))
+  let gifos = getGifsFromLocalStorage();
+  // por cada url construir un elemento donde se vea ese gif
+  const gifosElements = gifos.map(gifo => buildGifoElement(gifo));
 
-Gallery.append(...gifosElements)
+  Gallery.append(...gifosElements);
 }
 
 function buildGifoElement(gifo) {
-const gifoContainer = document.createElement("div");
-gifoContainer.className = "gifo-img";
-const imgGifo = document.createElement("img");
-imgGifo.src = gifo;
-gifoContainer.appendChild(imgGifo);
+  const gifoContainer = document.createElement("div");
+  gifoContainer.className = "gifo-img";
+  const imgGifo = document.createElement("img");
+  imgGifo.src = gifo;
+  gifoContainer.appendChild(imgGifo);
   return gifoContainer;
 }
-
-
-
-
 
 function changeThemeDark() {
   const themeDark = document.getElementById("dark");
@@ -315,12 +304,6 @@ function getGifsFromLocalStorage() {
   return localStorageItem ? JSON.parse(localStorageItem) : [];
 }
 
-function descargarGif() {
-  invokeSaveAsDialog(blob, "MyGif.gif");
+function endGif() {
+  window.location.replace("crearGifOs.html?modo=misgifos");
 }
-
-// function terminadoElGif() {
-
-//   mostEsconComponet(document.getElementById("cartel-muestr-desc"), esconder);
-//   window.location.replace("../mis-gif/mis-gif.html");
-// }

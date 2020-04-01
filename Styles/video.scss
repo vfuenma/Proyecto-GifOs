@@ -1,3 +1,6 @@
+
+
+
 .video-div {
   width: 100%;
   display: flex;
@@ -152,6 +155,7 @@
       align-items: center;
       margin-right: 0.5rem;
       position: relative;
+      font-size: 1.33rem;
 
       .send {
         width: 12rem;
@@ -167,12 +171,14 @@
       align-items: center;
       margin-right: 0.5rem;
       position: relative;
+      font-size: 1.33rem;
 
       .btn-record {
         border: 1px solid #110038;
         box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
         width: 12rem;
         height: 3.2rem;
+        font-size: 1.33rem;
 
         &:hover {
           border: 1px solid #110038;
@@ -188,6 +194,7 @@
   border: 1px solid #110038;
   outline: 1px dotted #110038;
   outline-offset: -4px;
+  font-size: 1.33rem;
 }
 
 .display-none {
@@ -205,7 +212,6 @@
 .botones-grabar.show {
   &::before {
     padding: 0.66rem;
-    // content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera.svg");
     text-align: center;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
@@ -238,19 +244,21 @@
   display: flex;
   justify-content: space-between;
   margin-left: 0.92rem;
+
   .timer {
     height: 3rem;
     width: 10.33rem;
     background: #ffffff;
     border: 1px solid #979797;
     box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+   
 
     .set-time {
-      font-size: 16px;
       color: #110038;
       letter-spacing: 0;
       line-height: 22px;
       text-align: center;
+      font-size: 1.33rem;
     }
   }
 }
@@ -292,6 +300,9 @@
           border: 1px solid #110038;
           box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
           margin-bottom: 1.17rem;
+          font-size: 1.33rem;
+          line-height: 18px;
+          font-weight: 300;
         }
       }
     }
@@ -304,10 +315,13 @@
     margin-top: 5.8rem;
     width: 12rem;
     height: 3rem;
+    font-size: 1.33rem;
+    line-height: 18px;
+    font-weight: 300;
   }
 }
 
-.gallery-gifos{
+.gallery-gifos {
   display: grid;
   margin-top: 1.33rem;
   grid-template-columns: repeat(4, 1fr);
@@ -315,16 +329,14 @@
   grid-auto-flow: dense;
   grid-gap: 0.83rem;
 
-
-.gifo-img{
- 
- img{
-  width: 100%;
-          height: 100%;
-      }
-      &:hover{
-        border: 1px dotted #110038;
-      }
- }
-
+  .gifo-img {
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    &:hover {
+      outline: 1px dotted #110038;
+      outline-offset: -4px;
+    }
+  }
 }

@@ -2,6 +2,7 @@ const APIKEY = "hpWd6JPs0tVTz4TVIOvoPo6H8pi9Elsy";
 const randomUrl = "http://api.giphy.com/v1/gifs/random?";
 const searchUrl = "http://api.giphy.com/v1/gifs/search?";
 const trendingUrl = "http://api.giphy.com/v1/gifs/trending?";
+let ArrSug = [];
 
 function confTema(){
   let tema = localStorage.getItem("tema");
@@ -12,6 +13,9 @@ function confTema(){
   }
 };
 confTema();
+
+RenderizarBusquedasPrevias();
+
 
 function AddClass(Selector, ClassName) {
   document.getElementById(Selector).classList.add(ClassName);
@@ -122,7 +126,9 @@ function getSearch() {
 const buttonSearch = document.getElementsByClassName("btn-search")[0];
 
 buttonSearch.addEventListener("click", function() {
-  getSearchResults(getSearch()).then(response => {
+  const Search = getSearch();
+  getSearchResults(Search).then(response => {
+    agregarBusquedaPrevia(Search);
     const gifs = response.data;
     const boxGifs = document.getElementById("giphy");
     boxGifs.innerHTML = null;
@@ -138,6 +144,14 @@ buttonSearch.addEventListener("click", function() {
     });
   });
 });
+
+function agregarBusquedaPrevia(Search){
+  let BotonesSearch = getSearchFromLocalStorage();
+  BotonesSearch.push(Search);
+  const aGuardar = BotonesSearch.slice(-10);
+  localStorage.setItem("BusquedasGuardadas", JSON.stringify(aGuardar));
+  RenderizarBusquedasPrevias();
+};
 
 function createGiphyItem(gif) {
   let fixed_height = gif.images.fixed_height;
@@ -192,7 +206,6 @@ function mostrarSugeridos() {
 
 mostrarSugeridos();
 
-
 function changeThemeDark(){
 const themeDark = document.getElementById("dark");
 const themePrincipal = document.getElementById("principal");
@@ -202,7 +215,6 @@ const body = document.getElementsByTagName("body")[0];
 let selectedTheme = themeDark.value;
 body.className = selectedTheme;
 localStorage.setItem("tema", "dark")
-
 }
 
 function changeThemePrincipal(){
@@ -216,8 +228,28 @@ function changeThemePrincipal(){
   localStorage.setItem("tema", "principal")
 }
 
-
 function Dropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
-
 }
+
+function RenderizarBusquedasPrevias(){
+const divBotones = document.getElementById("seach-saved")
+let busquedasPrevias = getSearchFromLocalStorage();
+const botonesBusq = busquedasPrevias.map(busqueda => construirBoton(busqueda));
+divBotones.innerHTML = null;
+divBotones.append(...botonesBusq);
+}
+
+function getSearchFromLocalStorage() {
+  const localStorageItem = localStorage.getItem("BusquedasGuardadas");
+  return localStorageItem ? JSON.parse(localStorageItem) : [];
+}
+
+function construirBoton(busqueda) {
+  const busquedaGuardada = document.createElement("button");
+  busquedaGuardada.className = "btn-saved-search";
+  busquedaGuardada.innerHTML = busqueda;
+  busquedaGuardada.addEventListener("click", ()=> buscarSugerencia(busqueda));
+  return busquedaGuardada;
+}
+

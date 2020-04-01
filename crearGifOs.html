@@ -30,8 +30,9 @@
           <div class="elem-logo">
             <a href="index.html">
               <img
-                src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/arrow.svg"
+                src="./assets/arrow.svg"
                 class="arrow"
+                alt ="arrow"
             /></a>
             <div class="logo-1"></div>
           </div>
@@ -81,7 +82,7 @@
           <header class="nav-bar"><p class="font-nav">Crear GifOS</p></header>
           <div class="titulo-crear-gifos">
             <img
-              src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/window img.png"
+              src="./assets/window img.png"
               class="pantallita"
             />
             <h2>Aquí podrás creas tus propios GifOs</h2>
@@ -106,7 +107,12 @@
             </ul>
           </div>
           <div class="botones">
-            <button class="btn-crear-gifo btn font-color" onclick="cancelUpload()">Cancelar</button>
+            <button
+              class="btn-crear-gifo btn font-color"
+              onclick="cancelUpload()"
+            >
+              Cancelar
+            </button>
             <button
               class="btn-crear-gifo comenzar btn font-color"
               onclick="startVideo()"
@@ -129,10 +135,10 @@
           <div class="video"></div>
           <div class="display-none" id="subiendo">
             <img
-              src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/globe_img.png"
+              src="./assets/globe_img.png"
               alt="globe"
             />
-            <p>Estamos subiendo tu guifo...</p>
+            <h6>Estamos subiendo tu guifo...</h6>
             <div class="barra">
               <div class="loading animacion"></div>
               <div class="cuadritos">
@@ -186,15 +192,21 @@
               Listo
             </button>
           </div>
-        
-          <button class="display-none font-color" id="btn-cancel" onclick="cancelUpload()">
+
+          <button
+            class="display-none font-color"
+            id="btn-cancel"
+            onclick="cancelUpload()"
+          >
             Cancelar
           </button>
-       
+
           <div class="display-none" id="button-send">
             <div class="timer"><p class="set-time" id="set-time"></p></div>
             <div class="botones-send">
-              <button class="send font-color" onclick="repeatRecording()">Repetir Captura</button>
+              <button class="send font-color" onclick="repeatRecording()">
+                Repetir Captura
+              </button>
               <button class="send font-color" onclick="uploadGif()">
                 Subir Guifo
               </button>
@@ -203,37 +215,35 @@
         </div>
       </template>
       <template id="div-upload">
-        
         <div class="container-send-gif">
           <header class="nav-bar font-nav">Guifo subido con éxito</header>
           <div class="elem-video">
-          <video id="preview-video" autoplay loop>
-          </video>
-          
-          <div class="elem-video-2">
-            <p class="font-upload">Gif creado con exito</p>
-            <div class="btn-send-guifos">
-            <button class= "send-guifos" id="copy-gif" >Copiar enlace Guifo</button>
-            <button class="send-guifos" onclick="descargarGif()">Descargar Guifo</button>
-          </div></div>
-        </div>  
-        <button class="btn-listo">Listo</button>
+            <video id="preview-video" autoplay loop></video>
 
+            <div class="elem-video-2">
+              <p class="font-upload">Gif creado con exito</p>
+              <div class="btn-send-guifos">
+                <button class="send-guifos" id="copy-gif">
+                  Copiar enlace Guifo
+                </button>
+                <button class="send-guifos" onclick="descargarGif()">
+                  Descargar Guifo
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="btn-listo" onclick="endGif()">Listo</button>
         </div>
       </template>
-
-
-
-
 
       <section class="CrearGifs"></section>
       <template id="Mis-gifos">
         <div class="header-section">
-          <p class="font-header-section">Mis GifOs:</p>
+          <h6 class="font-header-section">Mis GifOs:</h6>
         </div>
         <div class="gallery-gifos" id="gallery"></div>
       </template>
     </div>
-    <script src="/Users/valeria/Desktop/Acamica/Proyecto GifOS/JavaScript/video.js"></script>
+    <script src="./JavaScript/video.js"></script>
   </body>
 </html>

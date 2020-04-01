@@ -26,7 +26,8 @@ $color-scheme: (
     #fff4fd,
     url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa.svg"),
     url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera.svg"),
-    #F7C9F3
+    #F7C9F3,
+    1px dotted #110038
   ),
   (
     dark,
@@ -45,7 +46,8 @@ $color-scheme: (
     #2e32fb,
     url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_light.svg"),
     url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera_light.svg"),
-    #EE3EFE
+    #EE3EFE,
+    1px dotted #FFFFFF
   );
 
 @mixin get_theme(
@@ -65,7 +67,8 @@ $color-scheme: (
   $hover-box,
   $change-lupa,
   $change-cam,
-  $loading
+  $loading,
+  $dote-gifos
 ) {
   body.#{$name} {
     background-color: $background;
@@ -123,9 +126,10 @@ $color-scheme: (
     .nav-bar {
       background-image: $search;
     }
-    .btn-2 {
+    .btn-2, .btn-saved-search {
       background: $color-button-2;
     }
+
     .header-section {
       background: $background-section-header;
       box-shadow: $shadow-section-header;
@@ -176,6 +180,10 @@ $color-scheme: (
       background-color: $loading;
     }
 
+    .mis-guifos:hover{
+      border: $dote-gifos;
+      }
+
     @include trending-item($search);
   }
 }
@@ -183,7 +191,7 @@ $color-scheme: (
 @each $name, $background, $color-button, $icon, $search, $font-color,
   $color-button-2, $background-section-header, $border-section-header,
   $shadow-section-header, $box-background, $box-shadow, $inside-box, $hover-box,
-  $change-lupa, $change-cam, $loading in $color-scheme
+  $change-lupa, $change-cam, $loading, $dote-gifos in $color-scheme
 {
   @include get_theme(
     $name,
@@ -202,7 +210,8 @@ $color-scheme: (
     $hover-box,
     $change-lupa,
     $change-cam,
-    $loading
+    $loading,
+    $dote-gifos
   );
 }
 
@@ -235,6 +244,4 @@ html {
   outline-offset: -4px;
 }
 
-.mis-guifos:hover{
-border: 1px dotted #110038;
-}
+
