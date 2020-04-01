@@ -13,7 +13,7 @@ $color-scheme: (
     principal,
     #fdf4fc,
     #f7c9f3,
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo.png"),
+    url("./assets/gifOF_logo.png"),
     linear-gradient(270deg, #f7c9f3 0%, #4180f6 100%),
     #110038,
     #4180f6,
@@ -24,16 +24,16 @@ $color-scheme: (
     (inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff),
     #f0f0f0,
     #fff4fd,
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa.svg"),
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera.svg"),
-    #F7C9F3,
+    url("./assets/lupa.svg"),
+    url("./assets/camera.svg"),
+    #f7c9f3,
     1px dotted #110038
   ),
   (
     dark,
     #0f0135,
     #ee3efe,
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/gifOF_logo_dark.png"),
+    url("./assets/gifOF_logo_dark.png"),
     linear-gradient(270deg, #ee3efe 0%, #2e32fb 100%),
     #ffffff,
     #2e32fb,
@@ -44,10 +44,10 @@ $color-scheme: (
     (inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff),
     #cccccc,
     #2e32fb,
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/lupa_light.svg"),
-    url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/camera_light.svg"),
-    #EE3EFE,
-    1px dotted #FFFFFF
+    url("./assets/lupa_light.svg"),
+    url("./assets/camera_light.svg"),
+    #ee3efe,
+    1px dotted #ffffff
   );
 
 @mixin get_theme(
@@ -76,8 +76,7 @@ $color-scheme: (
       background-image: $icon;
     }
 
-
-    .send{
+    .send {
       background: $inside-box;
       &:active,
       &:hover {
@@ -86,7 +85,6 @@ $color-scheme: (
         outline: 1px dotted #110038;
         outline-offset: -4px;
       }
-
     }
     .select-box {
       .theme-select {
@@ -95,7 +93,6 @@ $color-scheme: (
       .dropdown-content {
         background: $box-background;
         box-shadow: $box-shadow;
-
 
         .theme-pick {
           background: $inside-box;
@@ -114,7 +111,7 @@ $color-scheme: (
       }
     }
 
-    .btn-cancel{
+    .btn-cancel {
       background: $hover-box;
     }
     .btn {
@@ -126,7 +123,8 @@ $color-scheme: (
     .nav-bar {
       background-image: $search;
     }
-    .btn-2, .btn-saved-search {
+    .btn-2,
+    .btn-saved-search {
       background: $color-button-2;
     }
 
@@ -139,7 +137,8 @@ $color-scheme: (
       &::before {
         content: $change-cam;
         background: $color-button;
-      }}
+      }
+    }
 
     .btn-search.change {
       &:before {
@@ -172,17 +171,17 @@ $color-scheme: (
       box-shadow: $box-shadow;
     }
 
-    .send-guifos{
+    .send-guifos {
       background-color: $hover-box;
     }
 
-    .loading{
+    .loading {
       background-color: $loading;
     }
 
-    .mis-guifos:hover{
+    .mis-guifos:hover {
       border: $dote-gifos;
-      }
+    }
 
     @include trending-item($search);
   }
@@ -243,5 +242,3 @@ html {
   outline: 1px dotted #110038;
   outline-offset: -4px;
 }
-
-

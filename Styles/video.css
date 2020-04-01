@@ -18,7 +18,7 @@
         margin-left: 0.4rem;
         font-weight: bold; }
       .video-div .container-video header .exit {
-        background: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/button3.svg") no-repeat;
+        background: url("./assets/button3.svg") no-repeat;
         cursor: pointer;
         border: none;
         width: 1.33rem;
@@ -159,7 +159,7 @@
 
 .botones-grabar.hide::before {
   padding: 0.45rem;
-  content: url("/Users/valeria/Desktop/Acamica/Proyecto GifOS/assets/recording.svg");
+  content: url("./assets/recording.svg");
   background: #ff6161;
   border: 1px solid #110038;
   box-shadow: inset -1px -1px 0 0 #993a3a, inset 1px 1px 0 0 #ffffff;
