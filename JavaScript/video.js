@@ -1,5 +1,5 @@
 const APIKEY = "hpWd6JPs0tVTz4TVIOvoPo6H8pi9Elsy";
-const apiUrl = "http://upload.giphy.com/v1/gifs";
+const apiUrl = "https://upload.giphy.com/v1/gifs";
 const idApi = "https://api.giphy.com/v1/gifs/";
 let recorder;
 let blobs;

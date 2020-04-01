@@ -1,7 +1,7 @@
 const APIKEY = "hpWd6JPs0tVTz4TVIOvoPo6H8pi9Elsy";
-const randomUrl = "http://api.giphy.com/v1/gifs/random?";
-const searchUrl = "http://api.giphy.com/v1/gifs/search?";
-const trendingUrl = "http://api.giphy.com/v1/gifs/trending?";
+const randomUrl = "https://api.giphy.com/v1/gifs/random?";
+const searchUrl = "https://api.giphy.com/v1/gifs/search?";
+const trendingUrl = "https://api.giphy.com/v1/gifs/trending?";
 let ArrSug = [];
 
 function confTema(){
