@@ -139,7 +139,8 @@ header .btn-bar-nav {
     width: 100%;
     height: 100%; }
   #giphy .trending-item:hover {
-    border: 1px dotted #110038; }
+    outline: 1px dotted #110038;
+    outline-offset: -4px; }
   #giphy .giphy-item-wide {
     grid-column: span 2; }
 
@@ -166,7 +167,7 @@ header .btn-bar-nav {
   margin-right: 1.55rem; }
 
 .btn-search.default:before {
-  content: url("./assets/lupa_inactive.svg");
+  content: url("/assets/lupa_inactive.svg");
   height: 1.33rem;
   width: 1.33rem;
   text-align: center;
@@ -299,7 +300,7 @@ header .btn-bar-nav {
     font-family: "Chakra Petch", sans-serif; }
     .select-box .theme-picker:after {
       position: absolute;
-      content: url("./assets/dropdown.svg");
+      content: url("/assets/dropdown.svg");
       width: 36px;
       height: 34px;
       border: 1px solid #110038;
@@ -355,7 +356,7 @@ header .btn-bar-nav {
         margin-left: 0.4rem;
         font-weight: bold; }
       .video-div .container-video header .exit {
-        background: url("./assets/button3.svg") no-repeat;
+        background: url("/assets/button3.svg") no-repeat;
         cursor: pointer;
         border: none;
         width: 1.33rem;
@@ -496,7 +497,7 @@ header .btn-bar-nav {
 
 .botones-grabar.hide::before {
   padding: 0.45rem;
-  content: url("./assets/recording.svg");
+  content: url("/assets/recording.svg");
   background: #ff6161;
   border: 1px solid #110038;
   box-shadow: inset -1px -1px 0 0 #993a3a, inset 1px 1px 0 0 #ffffff;
@@ -588,7 +589,7 @@ header .btn-bar-nav {
 body.principal {
   background-color: #fdf4fc; }
   body.principal .logo-1 {
-    background-image: url("./assets/gifOF_logo.png"); }
+    background-image: url("/assets/gifOF_logo.png"); }
   body.principal .send {
     background: #f0f0f0; }
     body.principal .send:active, body.principal .send:hover {
@@ -626,10 +627,10 @@ body.principal {
     box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d;
     border: 1px solid #e6bbe2; }
   body.principal .botones-grabar.show::before {
-    content: url("./assets/camera.svg");
+    content: url("/assets/camera.svg");
     background: #f7c9f3; }
   body.principal .btn-search.change:before {
-    content: url(url("./assets/lupa.svg"));
+    content: url("/assets/lupa.svg");
     height: 1.33rem;
     width: 1.33rem;
     text-align: center;
@@ -643,7 +644,7 @@ body.principal {
     outline-offset: -4px;
     color: #110038; }
     body.principal .active:before {
-      content: url("./assets/lupa.svg");
+      content: url("/assets/lupa.svg");
       height: 1.33rem;
       width: 1.33rem;
       text-align: center;
@@ -674,7 +675,7 @@ body.principal {
 body.dark {
   background-color: #0f0135; }
   body.dark .logo-1 {
-    background-image: url("./assets/gifOF_logo_dark.png"); }
+    background-image: url("/assets/gifOF_logo_dark.png"); }
   body.dark .send {
     background: #cccccc; }
     body.dark .send:active, body.dark .send:hover {
@@ -712,10 +713,10 @@ body.dark {
     box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #110038;
     border: 1px solid #2e32fb; }
   body.dark .botones-grabar.show::before {
-    content: url("./assets/camera_light.svg");
+    content: url("/assets/camera_light.svg");
     background: #ee3efe; }
   body.dark .btn-search.change:before {
-    content: url(url("./assets/lupa_light.svg"));
+    content: url("/assets/lupa_light.svg");
     height: 1.33rem;
     width: 1.33rem;
     text-align: center;
@@ -729,7 +730,7 @@ body.dark {
     outline-offset: -4px;
     color: #ffffff; }
     body.dark .active:before {
-      content: url("./assets/lupa_light.svg");
+      content: url("/assets/lupa_light.svg");
       height: 1.33rem;
       width: 1.33rem;
       text-align: center;

@@ -13,7 +13,7 @@ $color-scheme: (
     principal,
     #fdf4fc,
     #f7c9f3,
-    url("./assets/gifOF_logo.png"),
+    url("/assets/gifOF_logo.png"),
     linear-gradient(270deg, #f7c9f3 0%, #4180f6 100%),
     #110038,
     #4180f6,
@@ -24,8 +24,8 @@ $color-scheme: (
     (inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff),
     #f0f0f0,
     #fff4fd,
-    url("./assets/lupa.svg"),
-    url("./assets/camera.svg"),
+    url("/assets/lupa.svg"),
+    url("/assets/camera.svg"),
     #f7c9f3,
     1px dotted #110038
   ),
@@ -33,7 +33,7 @@ $color-scheme: (
     dark,
     #0f0135,
     #ee3efe,
-    url("./assets/gifOF_logo_dark.png"),
+    url("/assets/gifOF_logo_dark.png"),
     linear-gradient(270deg, #ee3efe 0%, #2e32fb 100%),
     #ffffff,
     #2e32fb,
@@ -44,8 +44,8 @@ $color-scheme: (
     (inset -2px -2px 0 0 #8f8f8f, inset 2px 2px 0 0 #ffffff),
     #cccccc,
     #2e32fb,
-    url("./assets/lupa_light.svg"),
-    url("./assets/camera_light.svg"),
+    url("/assets/lupa_light.svg"),
+    url("/assets/camera_light.svg"),
     #ee3efe,
     1px dotted #ffffff
   );
@@ -142,7 +142,7 @@ $color-scheme: (
 
     .btn-search.change {
       &:before {
-        content: url($change-lupa);
+        content: $change-lupa;
         height: 1.33rem;
         width: 1.33rem;
         text-align: center;

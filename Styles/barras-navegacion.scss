@@ -44,8 +44,6 @@ header {
   }
 }
 
-
-
 .container-1 {
   margin-top: 1.58rem;
   display: flex;
@@ -126,7 +124,8 @@ header {
           height: 100%;
       }
       &:hover{
-        border: 1px dotted #110038;
+        outline: 1px dotted #110038;
+        outline-offset: -4px;
       }
   }
 

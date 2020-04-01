@@ -23,7 +23,7 @@
       }
 
       .exit {
-        background: url("./assets/button3.svg")
+        background: url("/assets/button3.svg")
           no-repeat;
         cursor: pointer;
         border: none;
@@ -219,7 +219,7 @@
 .botones-grabar.hide {
   &::before {
     padding: 0.45rem;
-    content: url("./assets/recording.svg");
+    content: url("/assets/recording.svg");
     background: #ff6161;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #993a3a, inset 1px 1px 0 0 #ffffff;
