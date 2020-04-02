@@ -21,7 +21,7 @@
   margin-right: 1.55rem; }
 
 .btn-search.default:before {
-  content: url("/assets/lupa_inactive.svg");
+  content: url("../assets/lupa_inactive.svg");
   height: 1.33rem;
   width: 1.33rem;
   text-align: center;
