@@ -4,18 +4,17 @@ const searchUrl = "https://api.giphy.com/v1/gifs/search?";
 const trendingUrl = "https://api.giphy.com/v1/gifs/trending?";
 let ArrSug = [];
 
-function confTema(){
+function confTema() {
   let tema = localStorage.getItem("tema");
-  if (tema === "dark"){
-    changeThemeDark()
-  }else{
+  if (tema === "dark") {
+    changeThemeDark();
+  } else {
     changeThemePrincipal();
   }
-};
+}
 confTema();
 
 RenderizarBusquedasPrevias();
-
 
 function AddClass(Selector, ClassName) {
   document.getElementById(Selector).classList.add(ClassName);
@@ -36,17 +35,17 @@ function getRandomResults() {
 
 function fetchRandomGif(tag) {
   fetch(`${randomUrl}api_key=${APIKEY}&tag=${RandomArray[tag]}`)
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
 
-    .then(response => {
+    .then((response) => {
       let gif = response.data.images.fixed_width.url;
       let name = "#" + RandomArray[tag];
       let gifTitle = response.data.title;
       renderRandomGif(gif, tag, name, gifTitle);
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
     });
 }
@@ -62,19 +61,19 @@ getRandomResults();
 
 function getTrendingResults() {
   const found = fetch(`${trendingUrl}api_key=${APIKEY}&limit=16`)
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
     });
   return found;
 }
 
-getTrendingResults().then(response => {
+getTrendingResults().then((response) => {
   const trendingGifs = response.data;
   const boxTrendingGifs = document.getElementById("trending");
-  trendingGifs.forEach(gif => {
+  trendingGifs.forEach((gif) => {
     const trendingItem = createTrendingItem(gif);
     boxTrendingGifs.appendChild(trendingItem);
   });
@@ -107,10 +106,10 @@ function getSearchResults(search) {
   const found = fetch(
     `${searchUrl}q=${encodeURI(search)}&api_key=${APIKEY}&lang="es"`
   )
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
     });
   return found;
@@ -125,9 +124,16 @@ function getSearch() {
 
 const buttonSearch = document.getElementsByClassName("btn-search")[0];
 
-buttonSearch.addEventListener("click", function() {
+buttonSearch.addEventListener("click", buscar);
+document.getElementById("search").addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    buscar();
+  }
+});
+
+function buscar() {
   const Search = getSearch();
-  getSearchResults(Search).then(response => {
+  getSearchResults(Search).then((response) => {
     agregarBusquedaPrevia(Search);
     const gifs = response.data;
     const boxGifs = document.getElementById("giphy");
@@ -138,20 +144,21 @@ buttonSearch.addEventListener("click", function() {
     RandomGifs.innerHTML = null;
     RemoveClass("header-search", "display-none");
     AddClass("header-search", "header-section");
-    gifs.forEach(gif => {
+    gifs.forEach((gif) => {
       const GiphyItem = createGiphyItem(gif);
       boxGifs.appendChild(GiphyItem);
     });
   });
-});
+}
+13;
 
-function agregarBusquedaPrevia(Search){
+function agregarBusquedaPrevia(Search) {
   let BotonesSearch = getSearchFromLocalStorage();
   BotonesSearch.push(Search);
   const aGuardar = BotonesSearch.slice(-10);
   localStorage.setItem("BusquedasGuardadas", JSON.stringify(aGuardar));
   RenderizarBusquedasPrevias();
-};
+}
 
 function createGiphyItem(gif) {
   let fixed_height = gif.images.fixed_height;
@@ -178,24 +185,24 @@ function limpiarSugeridos() {
   const divBusqueda = document.getElementById("placeholder-search");
   divBusqueda.innerHTML = null;
   sugeridosVisibles = false;
-  RemoveClass("btn-busq", "change")
+  RemoveClass("btn-busq", "change");
   RemoveClass("btn-busq", "btn");
-  RemoveClass("btn-busq", "font-color") 
-  AddClass("btn-busq", "default")
+  RemoveClass("btn-busq", "font-color");
+  AddClass("btn-busq", "default");
 }
 
 function mostrarSugeridos() {
   const inputSearch = document.getElementById("search");
-  inputSearch.oninput = e => {
+  inputSearch.oninput = (e) => {
     if (!sugeridosVisibles) {
       const templateBusqueda = document.getElementById("busquedas-template");
       const divBusqueda = document.getElementById("placeholder-search");
       divBusqueda.innerHTML = templateBusqueda.innerHTML;
-      RemoveClass("btn-busq", "default")
-      AddClass("btn-busq", "change")
+      RemoveClass("btn-busq", "default");
+      AddClass("btn-busq", "change");
       AddClass("btn-busq", "btn");
-      AddClass("btn-busq", "font-color")    
-      eventoCerrarSugeridos = window.addEventListener("click", function() {
+      AddClass("btn-busq", "font-color");
+      eventoCerrarSugeridos = window.addEventListener("click", function () {
         limpiarSugeridos();
         window.removeEventListener("click", eventoCerrarSugeridos);
       });
@@ -206,18 +213,18 @@ function mostrarSugeridos() {
 
 mostrarSugeridos();
 
-function changeThemeDark(){
-const themeDark = document.getElementById("dark");
-const themePrincipal = document.getElementById("principal");
-themePrincipal.classList.remove("selected");
-themeDark.classList.add("selected");
-const body = document.getElementsByTagName("body")[0];
-let selectedTheme = themeDark.value;
-body.className = selectedTheme;
-localStorage.setItem("tema", "dark")
+function changeThemeDark() {
+  const themeDark = document.getElementById("dark");
+  const themePrincipal = document.getElementById("principal");
+  themePrincipal.classList.remove("selected");
+  themeDark.classList.add("selected");
+  const body = document.getElementsByTagName("body")[0];
+  let selectedTheme = themeDark.value;
+  body.className = selectedTheme;
+  localStorage.setItem("tema", "dark");
 }
 
-function changeThemePrincipal(){
+function changeThemePrincipal() {
   const themePrincipal = document.getElementById("principal");
   const themeDark = document.getElementById("dark");
   themePrincipal.classList.add("selected");
@@ -225,19 +232,21 @@ function changeThemePrincipal(){
   const body = document.getElementsByTagName("body")[0];
   let selectedTheme = themePrincipal.value;
   body.className = selectedTheme;
-  localStorage.setItem("tema", "principal")
+  localStorage.setItem("tema", "principal");
 }
 
 function Dropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
-function RenderizarBusquedasPrevias(){
-const divBotones = document.getElementById("seach-saved")
-let busquedasPrevias = getSearchFromLocalStorage();
-const botonesBusq = busquedasPrevias.map(busqueda => construirBoton(busqueda));
-divBotones.innerHTML = null;
-divBotones.append(...botonesBusq);
+function RenderizarBusquedasPrevias() {
+  const divBotones = document.getElementById("seach-saved");
+  let busquedasPrevias = getSearchFromLocalStorage();
+  const botonesBusq = busquedasPrevias.map((busqueda) =>
+    construirBoton(busqueda)
+  );
+  divBotones.innerHTML = null;
+  divBotones.append(...botonesBusq);
 }
 
 function getSearchFromLocalStorage() {
@@ -249,7 +258,6 @@ function construirBoton(busqueda) {
   const busquedaGuardada = document.createElement("button");
   busquedaGuardada.className = "btn-saved-search";
   busquedaGuardada.innerHTML = busqueda;
-  busquedaGuardada.addEventListener("click", ()=> buscarSugerencia(busqueda));
+  busquedaGuardada.addEventListener("click", () => buscarSugerencia(busqueda));
   return busquedaGuardada;
 }
-

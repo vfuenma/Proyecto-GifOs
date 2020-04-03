@@ -145,19 +145,6 @@ function uploadGif() {
   RemoveClass("btn-cancel", "display-none");
   AddClass("btn-cancel", "btn-cancel");
 
-  setTimeout(
-    function() {
-      const divVideo = document.getElementsByClassName("video-div")[0];
-      const divUpload = document.getElementById("div-upload");
-      divVideo.innerHTML = divUpload.innerHTML;
-      let previewVideo = document.getElementById("preview-video");
-      previewVideo.src = window.URL.createObjectURL(videoBlob);
-      renderizarModoMisGifos();
-    },
-
-    8000
-  );
-
   let form = new FormData();
   form.append("file", gifBlob, "myGif.gif");
   form.append("api_key", APIKEY);
@@ -174,6 +161,18 @@ function uploadGif() {
     .then(response => {
       return response.json();
     })
+.then(
+  function(result) {
+    const divVideo = document.getElementsByClassName("video-div")[0];
+    const divUpload = document.getElementById("div-upload");
+    divVideo.innerHTML = divUpload.innerHTML;
+    let previewVideo = document.getElementById("preview-video");
+    previewVideo.src = window.URL.createObjectURL(videoBlob);
+    renderizarModoMisGifos();
+    return result
+  },
+
+)
     .then(datos => {
       saveGifLocalStorage(datos.data.id);
     })
@@ -296,6 +295,19 @@ function saveGifLocalStorage(id) {
       let Gifs = getGifsFromLocalStorage();
       Gifs.push(url);
       localStorage.setItem("gifList", JSON.stringify(Gifs));
+      let copyLink = document.getElementById("copy-gif");
+      copyLink.addEventListener("click", (event) => {
+        const URL = url;
+        navigator.permissions.query({name: "clipboard-write"}).then(result => {
+          if (result.state == "granted" || result.state == "prompt") {
+            navigator.clipboard.writeText(URL).then(function() {
+              alert("Se ha copiado el link de tu gifo");
+            }, function() {
+              alert("Algo salió mal")
+            });
+          }
+        });
+       })
     });
 }
 
